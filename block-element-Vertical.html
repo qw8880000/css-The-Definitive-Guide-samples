@@ -3,10 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <title></title>
+  <link rel="stylesheet" href="style.css" type="text/css" media="screen" charset="utf-8">
 </head>
 <body>
 
+<h1>垂直格式化</h1>
 
+<p>
+  垂直格式化的7个属性：margin-top、border-top、padding-top、height、padding-bottom、border-bottom、margin-bottom
+</p>
+
+<h2>块级元素垂直格式化</h2>
+
+<h3>使用auto</h3>
+
+<p>If 'margin-top', or 'margin-bottom' are 'auto', their used value is 0</p>
+<div style="width: 500px; height:100px; border:1px solid red;">
+  <div style="height:50px; margin-top:auto; margin-bottom:auto; background-color: #04b696;">child</div>
+</div>
+
+<p>包含块高度为auto，而且子元素都为块级元素，</p>
+<div style="width: 500px; height:auto; border:1px solid red;">
+  <div style="width:200px; height:50px; margin-top:-10px; margin-bottom:auto; background-color: #04b696;">child</div>
+  <div style="width:200px; height:50px; margin-top:auto; margin-bottom:auto; background-color: #547096;">child</div>
+</div>
+<p>如果设置了上下边框或者上下边距</p>
+<div style="width: 500px; height:auto; border:1px solid red;">
+  <div style="width:200px; height:50px; margin-top:-10px; margin-bottom:auto; border:2px solid black; background-color: #04b696;">child</div>
+  <div style="width:200px; height:50px; margin-top:auto; margin-bottom:auto; border:2px solid black; background-color: #547096;">child</div>
+</div>
   
 </body>
 </html>
