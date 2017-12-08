@@ -17,21 +17,71 @@
 
 <h3>使用auto</h3>
 
-<p>If 'margin-top', or 'margin-bottom' are 'auto', their used value is 0</p>
+<p>如果 'margin-top' 和 'margin-bottom' 是 'auto', 它们的值被设置为0</p>
 <div style="width: 500px; height:100px; border:1px solid red;">
   <div style="height:50px; margin-top:auto; margin-bottom:auto; background-color: #04b696;">child</div>
 </div>
 
-<p>包含块高度为auto，而且子元素都为块级元素，</p>
+<h3>包含块高度为auto</h3>
+
+
+<p>如果包含块的高度为auto，最简单情况，其高度恰好包裹其内容高度</p>
 <div style="width: 500px; height:auto; border:1px solid red;">
-  <div style="width:200px; height:50px; margin-top:-10px; margin-bottom:auto; background-color: #04b696;">child</div>
-  <div style="width:200px; height:50px; margin-top:auto; margin-bottom:auto; background-color: #547096;">child</div>
+  line: 这是测试
 </div>
-<p>如果设置了上下边框或者上下边距</p>
-<div style="width: 500px; height:auto; border:1px solid red;">
-  <div style="width:200px; height:50px; margin-top:-10px; margin-bottom:auto; border:2px solid black; background-color: #04b696;">child</div>
-  <div style="width:200px; height:50px; margin-top:auto; margin-bottom:auto; border:2px solid black; background-color: #547096;">child</div>
+
+
+
+<p>如果包含块高度为auto且'border-top' 'border-bottom' 'padding-top' 'padding-bottom'均无设置，而且子元素都为块级元素，那么其高度为最高块级子元素的上边框到最低块级子元素的下边框之间的距离</p>
+<div style="width: 500px; height:auto; background-color: red;">
+  <div style="width:200px; height:50px; margin-top:10px; margin-bottom:10px; background-color: #04b696;">child1</div>
+  <div style="width:200px; height:50px; margin-top:10px; margin-bottom:10px; background-color: #547096;">child2</div>
 </div>
-  
+
+
+
+<p>如果包含块高度为auto且设置'border-top' 'border-bottom'，而且子元素都为块级元素，那么其高度为最高块级子元素的上外边距到最低块级子元素的下外边距之间的距离</p>
+<div style="width: 500px; height:auto; border:3px solid blue; background-color: red;">
+  <div style="width:200px; height:50px; margin-top:10px; margin-bottom:10px; background-color: #04b696;">child1</div>
+  <div style="width:200px; height:50px; margin-top:10px; margin-bottom:10px; background-color: #547096;">child2</div>
+</div>
+
+
+
+<p>设置了'padding-top' 'padding-bottom'同上例</p>
+<div style="width: 500px; height:auto; padding-top:1px; padding-bottom:1px; background-color: red;">
+  <div style="width:200px; height:50px; margin-top:10px; margin-bottom:10px; background-color: #04b696;">child1</div>
+  <div style="width:200px; height:50px; margin-top:10px; margin-bottom:10px; background-color: #547096;">child2</div>
+</div>
+
+
+
+<h3>垂直外边距的合并</h3>
+
+
+<p>垂直格式化的一个特性是 相邻元素的外边距会合并，选择其中较大的值，而不是相加</p>  
+<ul style="width:200px; background-color:red;">
+  <li style="width:100px; margin-bottom:20px; background-color: #04b696;">li 1</li>
+  <li style="width:100px; margin-top:30px; background-color: #04b696;">li 2</li>
+</ul>
+
+
+<p>如果相邻边距有多个，也会出现合并</p>
+<div style="width: 300px; background-color: #e3e3e3">
+  <ul style="width:200px; margin-bottom:10px; background-color:red;">
+    <li style="width:100px; margin-bottom:50px; background-color: #04b696;">li 1</li>
+  </ul>
+  <div style="width:200px; margin-top:20px; background-color: #04b">这是一个div</div>
+</div>
+
+<p>上述例子如果ul有边框，子元素li将被完全包含到块内，此时只剩下ul与div计算边距</p>
+<div style="width: 300px; background-color: #e3e3e3">
+  <ul style="width:200px; margin-bottom:10px; border:1px solid blue; background-color:red;">
+    <li style="width:100px; margin-bottom:50px; background-color: #04b696;">li 1</li>
+  </ul>
+  <div style="width:200px; margin-top:20px; background-color: #04b">这是一个div</div>
+</div>
+
+
 </body>
 </html>
