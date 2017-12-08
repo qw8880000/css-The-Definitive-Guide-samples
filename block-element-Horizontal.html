@@ -3,8 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title></title>
+  <link rel="stylesheet" href="style.css" type="text/css" media="screen" charset="utf-8">
 </head>
 <body>
+
+<h1>块级元素水平格式化</h1>
 
 <h2> 非替换块级元素的水平格式化 </h2>
 
@@ -24,7 +27,7 @@
 
 <h3>使用auto</h3>
 
-<p> 7大属性中，width,margin-left,margin-right这3个属性可以设置为auto，其余必须设置值，或者默认为0 </p>
+<p> 水平7大属性中，width,margin-left,margin-right这3个属性可以设置为auto，其余必须设置值，或者默认为0 </p>
 
 <p>3个都为auto，width会尽可能的宽</p>
 <div style="width: 500px; border:1px solid red;">parent
@@ -58,16 +61,18 @@
 
 <h3>负外边距</h3>
 
-<p>使用auto时，遵循7大属性之和为父元素宽度</p>
+<p>使用auto时，遵循水平7大属性之和为父元素宽度</p>
 <div style="width: 500px; border:1px solid red;">parent
   <div style="width:auto; margin-right:-50px; background-color: #04b696;">child</div>
 </div>
 
 <div style="width: 500px; border:1px solid red;">parent
-  <div style="width:600px; margin:auto; background-color: #04b696;">child
+  <div style="width:600px; margin:auto; background-color: #04b696;">child </div>
 </div>
 
+<h2> 替换块级元素的水平格式化 </h2>
 
+<p>非替换块级元素的规则适用于可替换块级元素，只有一个例外：如果width为auto，元素的宽度为内容的宽度。</p>
 
 </body>
 </html>
