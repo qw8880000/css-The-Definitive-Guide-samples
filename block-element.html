@@ -6,17 +6,68 @@
 </head>
 <body>
 
+<h2> 非替换块级元素的水平格式化 </h2>
+
+<p>水平格式化的“7大属性”：margin-left、border-left、padding-left、width、padding-right、border-right和margin-right</p>
+
 <h3>width 用于指定content的宽度</h3>
-<p style="width: 200px; background-color: #04b696;">width=200</p>
+<div style="width: 200px; background-color: #04b696;">width=200</div>
 
 <h3>可见区域包括 content、padding 和 border，margin区域不可见</h3>
-<p style="width: 200px; background-color: #04b696; padding: 10px; margin: 20px;">wideness?</p>
+<div style="width: 200px; background-color: #04b696; padding: 10px; margin: 20px;">wideness?</div>
   
 <h3>有一个简单的规则：正常流中块级元素的水平部分总和等于父元素的width</h3>
-以下child块的左右内边距、边框、外边距和内容宽度的总和等于parent的内容宽度(width)
+<p> 以下child块的左右内边距、边框、外边距和内容宽度的总和等于parent的内容宽度(width) </p>
 <div style="width: 500px; border:1px solid red;">parent
-  <div style="width: 200px; background-color: #04b696; padding: 10px; margin: 20px;">child</div>
+  <div style="width: 200px; background-color: #04b696; padding: 10px; margin: 20px; border:5px solid black;">child</div>
 </div>
+
+<h3>使用auto</h3>
+
+<p> 7大属性中，width,margin-left,margin-right这3个属性可以设置为auto，其余必须设置值，或者默认为0 </p>
+
+<p>3个都为auto，width会尽可能的宽</p>
+<div style="width: 500px; border:1px solid red;">parent
+  <div style="width:auto; margin-left:auto; margin-right:auto; border:5px solid black; background-color: #04b696;">child</div>
+</div>
+
+<p>width显式地设置，其余为auto</p>
+<div style="width: 500px; border:1px solid red;">parent
+  <div style="width:200px; margin-left:auto; margin-right:auto; border:5px solid black; background-color: #04b696;">child</div>
+</div>
+
+<p>width与margin-left显式的设置，margin-right为auto</p>
+<div style="width: 500px; border:1px solid red;">parent
+  <div style="width:200px; margin-left:10px; margin-right:auto; border:5px solid black; background-color: #04b696;">child</div>
+</div>
+
+<p>width与margin-right显式的设置，margin-left为auto</p>
+<div style="width: 500px; border:1px solid red;">parent
+  <div style="width:200px; margin-left:auto; margin-right:10px; border:5px solid black; background-color: #04b696;">child</div>
+</div>
+
+<p>3者都不为auto。这种情况下，这些属性过分受限，此时总会把margin-right设置为auto(从左向右排列时)</p>
+<div style="width: 500px; border:1px solid red;">parent
+  <div style="width:200px; margin-left:10px; margin-right:10px; border:5px solid black; background-color: #04b696;">child</div>
+</div>
+
+<p>两个外边距显式的设置，width为auto。width将被设置为某个值以达到需要的宽度（即父元素的内容宽度）</p>
+<div style="width: 500px; border:1px solid red;">parent
+  <div style="width:auto; margin-left:10px; margin-right:10px; border:5px solid black; background-color: #04b696;">child</div>
+</div>
+
+<h3>负外边距</h3>
+
+<p>使用auto时，遵循7大属性之和为父元素宽度</p>
+<div style="width: 500px; border:1px solid red;">parent
+  <div style="width:auto; margin-right:-50px; background-color: #04b696;">child</div>
+</div>
+
+<div style="width: 500px; border:1px solid red;">parent
+  <div style="width:600px; margin:auto; background-color: #04b696;">child
+</div>
+
+
 
 </body>
 </html>
