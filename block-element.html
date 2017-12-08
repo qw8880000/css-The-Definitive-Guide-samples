@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+
+<h3>width 用于指定content的宽度</h3>
+<p style="width: 200px; background-color: #04b696;">width=200</p>
+
+<h3>可见区域包括 content、padding 和 border，margin区域不可见</h3>
+<p style="width: 200px; background-color: #04b696; padding: 10px; margin: 20px;">wideness?</p>
+  
+<h3>有一个简单的规则：正常流中块级元素的水平部分总和等于父元素的width</h3>
+以下child块的左右内边距、边框、外边距和内容宽度的总和等于parent的内容宽度(width)
+<div style="width: 500px; border:1px solid red;">parent
+  <div style="width: 200px; background-color: #04b696; padding: 10px; margin: 20px;">child</div>
+</div>
+
+</body>
+</html>
