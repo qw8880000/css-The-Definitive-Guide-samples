@@ -82,6 +82,29 @@
   <div style="width:200px; margin-top:20px; background-color: #04b">这是一个div</div>
 </div>
 
+<h3>负外边距</h3>
+
+<p>相邻边距都为负值，取绝对值大的</p>
+<div style="width:200px; height:100px; margin-bottom:-30px; border: 2px solid #04b696;">div1</div>
+<div style="width:200px; height:100px; margin-left:10px; margin-top:-5px; border: 2px solid #547096;">div2</div>
+
+
+
+<p>相邻边距一正一负，结果为正值减去负值的绝对值</p>
+<div style="width:200px; height:100px; margin-bottom:-30px; border: 2px solid #04b696;">div1</div>
+<div style="width:200px; height:100px; margin-left:10px; margin-top:20px; border: 2px solid #547096;">div2</div>
+
+<h3>边距的设置会影响后续兄弟元素的排列</h3>
+<p>前</p>
+<div style="width:500px; height: 150px; border: 2px solid black">
+  <div style="width:200px; height:50px; margin-top:0; border: 2px solid #04b696;">div1</div>
+  <div style="width:200px; height:50px; margin-top:0; border: 2px solid #547096;">div2</div>
+</div>
+<p>后</p>
+<div style="width:500px; height: 150px; border: 2px solid black">
+  <div style="width:200px; height:50px; margin-top:20px; border: 2px solid #04b696;">div1</div>
+  <div style="width:200px; height:50px; margin-top:0; border: 2px solid #547096;">div2</div>
+</div>
 
 </body>
 </html>
