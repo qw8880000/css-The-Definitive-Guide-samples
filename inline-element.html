@@ -22,7 +22,7 @@
 
 <p>strong那一行，普通文本line-height为12px，加粗文本line-height为24px.
 于是一种行内框高度为12px，另一种行内框高度为24px。行框的高度应该是24px.</p>
-<div style="border: 1px solid red">
+<div style="border: 1px solid red; width:600px;">
   <p style="font-size:12px; line-height:12px;">
   This is text,<em>some of which is emphasized</em>, plus other text <br>
   which is <strong style="font-size:24px;line-height:24px;">strongly emphasized</strong>
@@ -34,7 +34,7 @@
 <p>strong那一行，普通文本line-height为12px，加粗文本line-height也是12px. 于是一种行内框高度都为12px，行框高度也是12px。
 在这里strong的font-size为24px，而line-height为12px，即内容区大于行内框高度。
 于是我们看到，文本超出了行框与其他文本重叠了。</p>
-<div style="border: 1px solid red">
+<div style="border: 1px solid red; width:600px;">
   <p style="font-size:12px; line-height:12px;">
   This is text,<em>some of which is emphasized</em>, plus other text <br>
   which is <strong style="font-size:24px;line-height:12px;">strongly emphasized</strong>
@@ -56,7 +56,7 @@
 <h3> 非替换元素的内边距、边框和外边距对行内框没有影响 </h3>
 
 <p>未设置padding border margin</p>
-<div style="border: 1px solid red">
+<div style="border: 1px solid red; width:600px;">
   <p style="font-size:12px; line-height:12px;">
   larger than the surrounding text. <br>
   This is text,<em>some of which is emphasized</em>, plus other text <br>
@@ -64,7 +64,7 @@
   </p>
 </div>
 <p>设置padding border margin</p>
-<div style="border: 1px solid red">
+<div style="border: 1px solid red; width:600px;">
   <p style="font-size:12px; line-height:12px;">
   larger than the surrounding text. <br>
   This is text,<em style="border: 1px solid blue; padding:5px 0; margin:5px 0;">some of which is emphasized</em>, plus other text <br>
@@ -76,7 +76,7 @@
 
 <p>vertical-align 默认为baseline</p>
 <img src="images/line-box.png" alt="">
-<div style="border: 1px solid red">
+<div style="border: 1px solid red; width:600px;">
   <p style="font-size:12px; line-height:12px;">
   This is text,<em>some of which is emphasized</em>, plus other text <br>
   which is <strong style="font-size:24px;line-height:24px;">strongly emphasized</strong>
@@ -86,7 +86,7 @@
 </div>
 
 <p> vertical-align影响行框高度。设置strong元素的vertical-align为20px </p>
-<div style="border: 1px solid red">
+<div style="border: 1px solid red; width:600px;">
   <p style="font-size:12px; line-height:12px;">
   This is text,<em>some of which is emphasized</em>, plus other text <br>
   which is <strong style="font-size:24px;line-height:24px;vertical-align:20px;">strongly emphasized</strong>
@@ -96,7 +96,7 @@
 </div>
 
 <p>行内元素与行框对齐。假设另一个元素设置vertical-align为top</p>
-<div style="border: 1px solid red">
+<div style="border: 1px solid red; width:600px;">
   <p style="font-size:12px; line-height:12px;">
   This is text,<em>some of which is emphasized</em>, plus other text <br>
   which is <strong style="font-size:24px;line-height:24px;vertical-align:20px;">strongly emphasized</strong> 12345 <em style="vertical-align:top;">tall</em> 
@@ -111,7 +111,7 @@
 <p>line-height设置不当有可能引起文本重叠。有一些办法来解决。</p>
 
 <p>对于font-size有改变的元素，结合使用em单位 </p>
-<div style="border: 1px solid red">
+<div style="border: 1px solid red; width:600px;">
   <p style="font-size:12px; line-height:12px;">
   This is text,<em>some of which is emphasized</em>, plus other text <br>
   which is <strong style="font-size:24px;line-height:1em;">strongly emphasized</strong>
@@ -121,7 +121,7 @@
 </div>
 
 <p>对于font-size有改变的元素，结合使用缩放因子 </p>
-<div style="border: 1px solid red">
+<div style="border: 1px solid red; width:600px;">
   <p style="font-size:12px; line-height:12px;">
   This is text,<em>some of which is emphasized</em>, plus other text <br>
   which is <strong style="font-size:24px;line-height:1;">strongly emphasized</strong>
