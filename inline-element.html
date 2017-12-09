@@ -16,20 +16,123 @@
 <p><strong>行内框：</strong>对于非替换元素，行内框的高度等于line-height的值。对于替换元素，行内框高度等于内容区高度。</p>
 <p><strong>行框：</strong>一行中，有可能存在多个高度不同的行内框，行框用于把所有的行内框包裹住。换句话说，行框的上边界要位于最高行内框的上边界，行框的边底要放在最低行内框的下边界。</p>
 
+<p>来看看行内框与行框的作用，其中行内框根据vertical-align属性垂直对齐。</p>
+
+<img src="images/line-box.png" alt="">
+
+<p>strong那一行，普通文本line-height为12px，加粗文本line-height为24px.
+于是一种行内框高度为12px，另一种行内框高度为24px。行框的高度应该是24px.</p>
+<div style="border: 1px solid red">
+  <p style="font-size:12px; line-height:12px;">
+  This is text,<em>some of which is emphasized</em>, plus other text <br>
+  which is <strong style="font-size:24px;line-height:24px;">strongly emphasized</strong>
+  and which is <br>
+  larger than the surrounding text.
+  </p>
+</div>
+
+<p>strong那一行，普通文本line-height为12px，加粗文本line-height也是12px. 于是一种行内框高度都为12px，行框高度也是12px。
+在这里strong的font-size为24px，而line-height为12px，即内容区大于行内框高度。
+于是我们看到，文本超出了行框与其他文本重叠了。</p>
+<div style="border: 1px solid red">
+  <p style="font-size:12px; line-height:12px;">
+  This is text,<em>some of which is emphasized</em>, plus other text <br>
+  which is <strong style="font-size:24px;line-height:12px;">strongly emphasized</strong>
+  and which is <br>
+  larger than the surrounding text.
+  </p>
+</div>
+
+
+
 <h2>非替换行内元素</h1>
 
-<p style="font-size:12px; line-height:12px;">
-This is text,<em>some of which is emphasized</em>, plus other text <br>
-which is <strong style="font-size:24px;">strongly emphasized</strong>
-and which is <br>
-larger than the surrounding text.
-</p>
-<p style="font-size:12px; line-height:12px;">
-This is text,<em>some of which is emphasized</em>, plus other text <br>
-which is <strong style="font-size:24px;vertical-align:14px;">strongly emphasized</strong>
-and which is <br>
-larger than the surrounding text.
-</p>
+<h3>内容区与行内框</h3>
+<p>如果一行内元素font-size为15px，line-height为21px</p>
+<img src="images/inline-box.png" alt="">
+
+
+
+<h3> 非替换元素的内边距、边框和外边距对行内框没有影响 </h3>
+
+<p>未设置padding border margin</p>
+<div style="border: 1px solid red">
+  <p style="font-size:12px; line-height:12px;">
+  larger than the surrounding text. <br>
+  This is text,<em>some of which is emphasized</em>, plus other text <br>
+  which is and which is <br>
+  </p>
+</div>
+<p>设置padding border margin</p>
+<div style="border: 1px solid red">
+  <p style="font-size:12px; line-height:12px;">
+  larger than the surrounding text. <br>
+  This is text,<em style="border: 1px solid blue; padding:5px 0; margin:5px 0;">some of which is emphasized</em>, plus other text <br>
+  which is and which is <br>
+  </p>
+</div>
+
+<h3> vertical-align </h3>
+
+<p>vertical-align 默认为baseline</p>
+<img src="images/line-box.png" alt="">
+<div style="border: 1px solid red">
+  <p style="font-size:12px; line-height:12px;">
+  This is text,<em>some of which is emphasized</em>, plus other text <br>
+  which is <strong style="font-size:24px;line-height:24px;">strongly emphasized</strong>
+  and which is <br>
+  larger than the surrounding text.
+  </p>
+</div>
+
+<p> vertical-align影响行框高度。设置strong元素的vertical-align为20px </p>
+<div style="border: 1px solid red">
+  <p style="font-size:12px; line-height:12px;">
+  This is text,<em>some of which is emphasized</em>, plus other text <br>
+  which is <strong style="font-size:24px;line-height:24px;vertical-align:20px;">strongly emphasized</strong>
+  and which is <br>
+  larger than the surrounding text.
+  </p>
+</div>
+
+<p>行内元素与行框对齐。假设另一个元素设置vertical-align为top</p>
+<div style="border: 1px solid red">
+  <p style="font-size:12px; line-height:12px;">
+  This is text,<em>some of which is emphasized</em>, plus other text <br>
+  which is <strong style="font-size:24px;line-height:24px;vertical-align:20px;">strongly emphasized</strong> 12345 <em style="vertical-align:top;">tall</em> 
+  and which is <br>
+  larger than the surrounding text.
+  </p>
+</div>
+
+
+<h3>管理line-height</h3>
+
+<p>line-height设置不当有可能引起文本重叠。有一些办法来解决。</p>
+
+<p>对于font-size有改变的元素，结合使用em单位 </p>
+<div style="border: 1px solid red">
+  <p style="font-size:12px; line-height:12px;">
+  This is text,<em>some of which is emphasized</em>, plus other text <br>
+  which is <strong style="font-size:24px;line-height:1em;">strongly emphasized</strong>
+  and which is <br>
+  larger than the surrounding text.
+  </p>
+</div>
+
+<p>对于font-size有改变的元素，结合使用缩放因子 </p>
+<div style="border: 1px solid red">
+  <p style="font-size:12px; line-height:12px;">
+  This is text,<em>some of which is emphasized</em>, plus other text <br>
+  which is <strong style="font-size:24px;line-height:1;">strongly emphasized</strong>
+  and which is <br>
+  larger than the surrounding text.
+  </p>
+</div>
+
+
+<h2>替换行内元素</h2>
+
 
 </body>
 </html>
