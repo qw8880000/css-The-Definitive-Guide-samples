@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" type="text/css" media="screen" charset="utf-8">
+</head>
+<body>
+
+<h1> 行内元素 </h1>
+
+<h2>基本概念</h2>
+
+<p><strong>内容区：</strong>元素的固有高度再加上内边距与边框。</p>
+<p><strong>行间距：</strong>font-size与line-height之差。这个值要分为两半，分别用于内容区的顶部和底部。行间距只应用于非替换元素。</p>
+<p><strong>行内框：</strong>对于非替换元素，行内框的高度等于line-height的值。对于替换元素，行内框高度等于内容区高度。</p>
+<p><strong>行框：</strong>一行中，有可能存在多个高度不同的行内框，行框用于把所有的行内框包裹住。换句话说，行框的上边界要位于最高行内框的上边界，行框的边底要放在最低行内框的下边界。</p>
+
+<h2>非替换行内元素</h1>
+
+<p style="font-size:12px; line-height:12px;">
+This is text,<em>some of which is emphasized</em>, plus other text <br>
+which is <strong style="font-size:24px;">strongly emphasized</strong>
+and which is <br>
+larger than the surrounding text.
+</p>
+<p style="font-size:12px; line-height:12px;">
+This is text,<em>some of which is emphasized</em>, plus other text <br>
+which is <strong style="font-size:24px;vertical-align:14px;">strongly emphasized</strong>
+and which is <br>
+larger than the surrounding text.
+</p>
+
+</body>
+</html>
