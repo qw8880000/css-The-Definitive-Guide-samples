@@ -11,46 +11,19 @@
 
 <h2>基本概念</h2>
 
+<p><strong>em框：</strong>em框在字体中定义，也称为字符框。</p>
 <p><strong>内容区：</strong>元素的固有高度再加上内边距与边框。</p>
 <p><strong>行间距：</strong>font-size与line-height之差。这个值要分为两半，分别用于内容区的顶部和底部。行间距只应用于非替换元素。</p>
 <p><strong>行内框：</strong>对于非替换元素，行内框的高度等于line-height的值。对于替换元素，行内框高度等于内容区高度。</p>
 <p><strong>行框：</strong>一行中，有可能存在多个高度不同的行内框，行框用于把所有的行内框包裹住。换句话说，行框的上边界要位于最高行内框的上边界，行框的边底要放在最低行内框的下边界。</p>
 
-<p>来看看行内框与行框的作用，其中行内框根据vertical-align属性垂直对齐。</p>
-
-<img src="images/line-box.png" alt="">
-
-<p>strong那一行，普通文本line-height为12px，加粗文本line-height为24px.
-于是一种行内框高度为12px，另一种行内框高度为24px。行框的高度应该是24px.</p>
-<div style="border: 1px solid red; width:600px;">
-  <p style="font-size:12px; line-height:12px;">
-  This is text,<em>some of which is emphasized</em>, plus other text <br>
-  which is <strong style="font-size:24px;line-height:24px;">strongly emphasized</strong>
-  and which is <br>
-  larger than the surrounding text.
-  </p>
-</div>
-
-<p>strong那一行，普通文本line-height为12px，加粗文本line-height也是12px. 于是一种行内框高度都为12px，行框高度也是12px。
-在这里strong的font-size为24px，而line-height为12px，即内容区大于行内框高度。
-于是我们看到，文本超出了行框与其他文本重叠了。</p>
-<div style="border: 1px solid red; width:600px;">
-  <p style="font-size:12px; line-height:12px;">
-  This is text,<em>some of which is emphasized</em>, plus other text <br>
-  which is <strong style="font-size:24px;line-height:12px;">strongly emphasized</strong>
-  and which is <br>
-  larger than the surrounding text.
-  </p>
-</div>
-
-
 
 <h2>非替换行内元素</h1>
 
 <h3>内容区与行内框</h3>
-<p>如果一行内元素font-size为15px，line-height为21px</p>
+<p>对于行内非替换元素，font-size确定内容区高度，line-height确定行内框高度。
+如果一行内元素font-size为15px，line-height为21px：</p>
 <img src="images/inline-box.png" alt="">
-
 
 
 <h3> 非替换元素的内边距、边框和外边距对行内框没有影响 </h3>
@@ -72,9 +45,37 @@
   </p>
 </div>
 
-<h3> vertical-align </h3>
+<h3> 行框高度的确定 </h3>
 
-<p>vertical-align 默认为baseline</p>
+<p>strong那一行，普通文本line-height为12px，加粗文本line-height为24px.
+于是一种行内框高度为12px，另一种行内框高度为24px。行框的高度应该要可以包裹该行的所有行内框，所以是24px.</p>
+<div style="border: 1px solid red; width:600px;">
+  <p style="font-size:12px; line-height:12px;">
+  This is text,<em>some of which is emphasized</em>, plus other text <br>
+  which is <strong style="font-size:24px;line-height:24px;">strongly emphasized</strong>
+  and which is <br>
+  larger than the surrounding text.
+  </p>
+</div>
+
+<p>strong那一行，普通文本line-height为12px，加粗文本line-height也是12px. 于是行内框高度都为12px，行框用于包裹行内框，所以高度也是12px。
+在这里strong的font-size为24px，而line-height为12px，即内容区大于行内框高度。
+于是我们看到，文本超出了行框与其他文本重叠了。</p>
+<div style="border: 1px solid red; width:600px;">
+  <p style="font-size:12px; line-height:12px;">
+  This is text,<em>some of which is emphasized</em>, plus other text <br>
+  which is <strong style="font-size:24px;line-height:12px;">strongly emphasized</strong>
+  and which is <br>
+  larger than the surrounding text.
+  </p>
+</div>
+
+
+<h3> vertical-align 垂直对齐方式</h3>
+
+<p> 在同一行框中的行内元素们通过设置vertical-align来设置它们在垂直方向上的对齐方式.  </p>
+
+<p>vertical-align 默认为baseline，它的作用是使行内元素们根据父元素的基线对齐：</p>
 <img src="images/line-box.png" alt="">
 <div style="border: 1px solid red; width:600px;">
   <p style="font-size:12px; line-height:12px;">
@@ -85,7 +86,7 @@
   </p>
 </div>
 
-<p> vertical-align影响行框高度。设置strong元素的vertical-align为20px </p>
+<p> vertical-align为数值时，该元素本身偏离基线相同数值：</p>
 <div style="border: 1px solid red; width:600px;">
   <p style="font-size:12px; line-height:12px;">
   This is text,<em>some of which is emphasized</em>, plus other text <br>
@@ -95,7 +96,7 @@
   </p>
 </div>
 
-<p>行内元素与行框对齐。假设另一个元素设置vertical-align为top</p>
+<p>vertical-align为top，元素与行框顶部对齐：</p>
 <div style="border: 1px solid red; width:600px;">
   <p style="font-size:12px; line-height:12px;">
   This is text,<em>some of which is emphasized</em>, plus other text <br>
@@ -104,6 +105,8 @@
   larger than the surrounding text.
   </p>
 </div>
+
+<p>vertical-align还有其他值，不再举例。</p>
 
 
 <h3>管理line-height</h3>
@@ -131,8 +134,34 @@
 </div>
 
 
-<h2>替换行内元素</h2>
+<h2>可替换行内元素</h2>
 
+<h3>内容区与行内框</h3>
+<p> 对于替换元素，行内框的高度恰好等于元素上边距到下边距的距离。 </p>
+<div style="border:1px solid red;">
+  <p> The text in this paragraph contains an img element. This element has been given a <br>
+  height that is larger than a typical line box height for this paragraph. <img src="./images/logo.png" alt=""> which leads <br>
+  to some potentially unwanted consequences. The extra space you see between lines of text is to be expected. </p>
+</div>
+
+<h3>行内框高度的确定</h3>
+<p>可替换行内元素的行内框高度计算方式为：把height,margin-top,margin-bottom,border-top-width,border-bottom-width,padding-top,padding-bottom相加。</p>
+<div style="border:1px solid red;">
+  <p> The text in this paragraph contains an img element. This element has been given a <br>
+  height that is larger than a typical line box height for this paragraph. <img style="margin:10px 0; padding:10px 0;" src="./images/logo.png" alt=""> which leads <br>
+  to some potentially unwanted consequences. The extra space you see between lines of text is to be expected. </p>
+</div>
+
+<h3>行框高度的确定</h3>
+<p>可替换行内元素行框高度的确定与非替换行内元素一样。</p>
+
+<h3>垂直方向上的对齐</h3>
+<p>对于可替换行内元素，默认对齐方式为其下外边距与行框的基线对齐。</p>
+<div style="border:1px solid red;">
+  <p> The text in this paragraph contains an img element. This element has been given a <br>
+  height that is larger than a typical line box height for this paragraph. <img style="margin:10px 0; padding:10px 0;" src="./images/logo.png" alt=""> which leads <br>
+  to some potentially unwanted consequences. The extra space you see between lines of text is to be expected. </p>
+</div>
 
 </body>
 </html>
