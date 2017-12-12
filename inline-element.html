@@ -138,17 +138,17 @@
 
 <h3>内容区与行内框</h3>
 <p> 对于替换元素，行内框的高度恰好等于元素上边距到下边距的距离。 </p>
-<div style="border:1px solid red;">
-  <p> The text in this paragraph contains an img element. This element has been given a <br>
-  height that is larger than a typical line box height for this paragraph. <img src="./images/logo.png" alt=""> which leads <br>
+<div style="width:600px; border:1px solid red;">
+  <p> The text in this paragraph contains an img element. This element has been given a
+  height that is larger than a typical line <img style="width:50px; height:50px;"src="./images/logo.png" alt=""> box height for this paragraph. which leads
   to some potentially unwanted consequences. The extra space you see between lines of text is to be expected. </p>
 </div>
 
 <h3>行内框高度的确定</h3>
 <p>可替换行内元素的行内框高度计算方式为：把height,margin-top,margin-bottom,border-top-width,border-bottom-width,padding-top,padding-bottom相加。</p>
-<div style="border:1px solid red;">
-  <p> The text in this paragraph contains an img element. This element has been given a <br>
-  height that is larger than a typical line box height for this paragraph. <img style="margin:10px 0; padding:10px 0;" src="./images/logo.png" alt=""> which leads <br>
+<div style="width:600px; border:1px solid red;">
+  <p> The text in this paragraph contains an img element. This element has been given a
+  height that is larger than a typical line <img style="width:50px; height:50px; margin:10px 0; padding:10px 0;" src="./images/logo.png" alt=""> box height for this paragraph. which leads
   to some potentially unwanted consequences. The extra space you see between lines of text is to be expected. </p>
 </div>
 
@@ -157,9 +157,9 @@
 
 <h3>垂直方向上的对齐</h3>
 <p>对于可替换行内元素，默认对齐方式为其下外边距与行框的基线对齐。</p>
-<div style="border:1px solid red;">
-  <p> The text in this paragraph contains an img element. This element has been given a <br>
-  height that is larger than a typical line box height for this paragraph. <img style="margin:10px 0; padding:10px 0;" src="./images/logo.png" alt=""> which leads <br>
+<div style="width:600px; border:1px solid red;">
+  <p> The text in this paragraph contains an img element. This element has been given a
+  height that is larger than a typical line <img style="width:50px; height:50px; margin:10px 0; padding:10px 0;" src="./images/logo.png" alt=""> box height for this paragraph. which leads
   to some potentially unwanted consequences. The extra space you see between lines of text is to be expected. </p>
 </div>
 

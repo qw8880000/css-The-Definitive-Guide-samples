@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css" type="text/css" media="screen" charset="utf-8">
+</head>
+<body>
+  
+<h1>浮动</h1>
+
+<h2>浮动的基础规则</h2>
+
+<h3>
+  设置了浮动的元素在当前行向左或向右移，直到碰到包含块的边界或其他浮动元素的外边界；元素浮动时，其他内容会环绕这该元素；浮动元素如果在一个行框内，那么浮动元素的上外边界与行框的上边界对齐。
+</h3>
+
+浮动前
+<div style="width:700px; border:1px solid red;">
+  <p> The text in this paragraph contains an img element. This element has been given a 
+  height that is larger than a typical line box height for this paragraph. <img style="width:50px;height:50px;" src="./images/logo.png" alt=""> which leads 
+  to some potentially unwanted consequences. The extra space you see between lines of text is to be expected. </p>
+</div>
+浮动后
+<div style="width:700px; border:1px solid red;">
+  <p> The text in this paragraph contains an img element. This element has been given a 
+  height that is larger than a typical line box height for this paragraph. <img style="float:left;width:50px;height:50px;" src="./images/logo.png" alt=""> which leads 
+  to some potentially unwanted consequences. The extra space you see between lines of text is to be expected. </p>
+</div>
+
+<h3> 浮动元素脱离了正常流，所以非定位的包含块在正常流布局中就当浮动元素是不存在的一样。但是包含块里所包含的行框会围绕浮动元素。 </h3>
+
+浮动前
+<div style="width:700px; border:2px solid blue;">
+  <img style="width:50px;height:50px;" src="./images/logo.png" alt=""> 
+  <div style="background-color:#bce8f1;">
+    <p> The text in this paragraph contains an img element. This element has been given a 
+    height that is larger than a typical line box height for this paragraph. which leads 
+    to some potentially unwanted consequences. The extra space you see between lines of text is to be expected. </p>
+  </div>
+</div>
+浮动后
+<div style="width:700px; border:2px solid blue;">
+  <img style="float:left;width:50px;height:50px;" src="./images/logo.png" alt=""> 
+  <div style="background-color:#bce8f1;">
+    <p> The text in this paragraph contains an img element. This element has been given a 
+    height that is larger than a typical line box height for this paragraph. which leads 
+    to some potentially unwanted consequences. The extra space you see between lines of text is to be expected. </p>
+  </div>
+</div>
+
+<h3> 浮动元素与周围元素的外边距不会合并 </h3>
+
+<h3>浮动会让元素生成块级框</h3>
+如果让一个img元素浮动，浮动完之后元素的display会变成block。
+
+<h3> 浮动一个非替换元素，如果width不设置，它的宽度趋于0 </h3>
+
+浮动前
+<div style="width:700px; border:2px solid blue;">
+  <div style="height:50px;border:1px solid red;">test</div>
+  <div style="background-color:#bce8f1;">
+    <p> The text in this paragraph contains an img element. This element has been given a 
+    height that is larger than a typical line box height for this paragraph. which leads 
+    to some potentially unwanted consequences. The extra space you see between lines of text is to be expected. </p>
+  </div>
+</div>
+浮动后
+<div style="width:700px; border:2px solid blue;">
+  <div style="float:left;height:50px;border:1px solid red;"></div>
+  <div style="background-color:#bce8f1;">
+    <p> The text in this paragraph contains an img element. This element has been given a 
+    height that is larger than a typical line box height for this paragraph. which leads 
+    to some potentially unwanted consequences. The extra space you see between lines of text is to be expected. </p>
+  </div>
+</div>
+
+
+
+
+
+
+<h2>浮动的详细规则</h2>
+
+<h3>1. 浮动元素的左外边界不能超出其包含块的左内边界。向右浮动亦然。</h3>
+<div style="width:700px; border:1px solid red;">
+  <p> The text in this paragraph contains an img element. This element has been given a 
+  height that is larger than a typical line box height for this paragraph. <img style="float:left;width:50px;height:50px;" src="./images/logo.png" alt=""> which leads 
+  to some potentially unwanted consequences. The extra space you see between  lines of text is to be expected. </p>
+</div>
+
+<h3>2. 浮动元素的左外边界必须是源文档中之前出现的左浮动元素的右外边界，除非后出现的浮动元素的顶端在先出现的浮动元素的底端的下面。右浮动亦然。</h3> 
+
+如果一个元素向左浮动，那么它会尽可能的往左浮动，直到遇到其他浮动元素的外边界或者包含块的内边界。
+这条会则可以有效的防止浮动元素重叠。
+<div style="width:700px; border:1px solid red;">
+  <p> The text in this paragraph contains an img element. This element has been given a 
+  height that is larger than a typical line box height for this paragraph. <img style="float:left;width:50px;height:50px;" src="./images/logo.png" alt=""> which leads 
+  to some <img style="float:left;width:50px;height:50px;" src="./images/logo.png" alt=""> potentially 
+  unwanted consequences. 
+  The extra space you see between  
+  The extra space you see between  
+  The extra space you see between  
+  The extra space you see between  
+  The extra space you see between  
+  The extra space you see between  
+  The extra <img style="float:left;width:50px;height:50px;" src="./images/logo.png" alt=""> space you see between  
+  The extra space you see between  
+  The extra space you see between  
+  The extra space you see between  
+  lines of text is to be expected. </p>
+</div>
+
+<h3>3. 左浮动元素的右外边界不会在一个右浮动元素的左外边界的右边。右浮动元素的左外边界不会在左浮动元素的右外边界的左边。右浮动亦然。</h3>
+这条规则也是防止浮动元素重叠。
+
+<div style="width:70px;height:150px;border:1px solid red;">
+  <img style="float:left;width:50px;height:50px;" src="./images/logo.png" alt=""> <img style="float:right;width:50px;height:50px;" src="./images/logo.png" alt=""> 
+</div>
+
+<h3>4. 一个浮动元素的顶端不能比其父元素的内顶端更高。如果一个浮动元素在两个合并外边距之间，放置这个浮动元素时就好像在两个元素之间有一个块级父元素。</h3>
+
+<p> 一个浮动元素会尽量向上浮动，直到它的上外边界碰到包含块的上内边界。 </p>
+浮动前
+<div style="width:500px;height:100px;border:1px solid red;">
+  <em>this is a em text.just for test.</em>
+  <div style="width:50px;height:50px;border:1px solid blue;">div</div>
+</div>
+浮动后
+<div style="width:500px;height:100px;border:1px solid red;">
+  <em>this is a em text.just for test.</em>
+  <div style="float:left;width:50px;height:50px;border:1px solid blue;">div</div>
+</div>
+
+<h3>5. 浮动元素的顶端不能比之前所有浮动元素或块级元素的顶端更高。</h3>
+<p> 一个浮动元素会尽量向上浮动，但是它的上外边界不能比源文档中更早出现的块元素或者浮动元素的上边界更高。 </p>
+
+浮动前
+<div style="width:500px;height:200px;border:1px solid red;">
+  <div style="width:100px;height:50px;background-color:#bce8f1;">a div</div>
+  <div style="width:50px;height:50px;border:1px solid blue;">div</div>
+</div>
+浮动后
+<div style="width:500px;height:200px;border:1px solid red;">
+  <div style="width:100px;height:50px;background-color:#bce8f1;">a div</div>
+  <div style="float:left; width:50px;height:50px;border:1px solid blue;">div</div>
+</div>
+
+<h3>6. 当前浮动元素的上外边界不能比源文档中更早出现的任意行框的顶端更高。</h3>
+
+
+浮动前
+<div style="width:700px; height:200px;border:1px solid red;">
+  <em> The text in this paragraph contains an img element. This element has been given a 
+  height that is larger than a typical line box height for this paragraph. <img style="float:left;width:50px;height:50px;" src="./images/logo.png" alt=""> which leads 
+  to some potentially unwanted consequences. The extra space you see between lines of text is to be expected. </em>
+
+  <div style="width:50px; height:50px; border:1px solid blue;">div</div>
+</div>
+
+浮动后
+<div style="width:700px; height:200px;border:1px solid red;">
+  <em> The text in this paragraph contains an img element. This element has been given a 
+  height that is larger than a typical line box height for this paragraph. <img style="float:left;width:50px;height:50px;" src="./images/logo.png" alt=""> which leads 
+  to some potentially unwanted consequences. The extra space you see between lines of text is to be expected. </em>
+
+  <div style="float:left; width:50px; height:50px; border:1px solid blue;">div</div>
+</div>
+
+
+<h3>7. 左浮动元素的左边有另一个浮动元素，前者的右外边界不能在其包含块的右边界的右边。右浮动亦然。</h3>
+<p> 浮动元素不能超出其包含元素的边界，除非它比包含元素更宽。 </p>
+包含元素够宽
+<div style="width:500px; height:100px;border:1px solid red;">
+  <div style="float:left; width:50px; height:50px; border:1px solid blue;">div1</div>
+  <div style="float:left; width:50px; height:50px; border:1px solid blue;">div2</div>
+  <div style="float:left; width:50px; height:50px; border:1px solid blue;">div3</div>
+  <div style="float:left; width:50px; height:50px; border:1px solid blue;">div4</div>
+  <div style="float:left; width:50px; height:50px; border:1px solid blue;">div5</div>
+</div>
+
+包含元素不够宽
+<div style="width:200px; height:100px;border:1px solid red;">
+  <div style="float:left; width:50px; height:50px; border:1px solid blue;">div1</div>
+  <div style="float:left; width:50px; height:50px; border:1px solid blue;">div2</div>
+  <div style="float:left; width:50px; height:50px; border:1px solid blue;">div3</div>
+  <div style="float:left; width:50px; height:50px; border:1px solid blue;">div4</div>
+  <div style="float:left; width:50px; height:50px; border:1px solid blue;">div5</div>
+</div>
+
+<h3>8. 浮动元素必须尽可能高的放置。但是受上述7条规则限制。</h3>
+<h3>9. 左浮动元素必须尽可能左移，右浮动元素尽可能右移。但是受上述7条规则限制。</h3>
+
+
+<h2>负外边距</h2>
+
+<p>之前的规则说到，浮动元素不会超过包含元素的内边界，但是设置浮动元素的margin为负，浮动元素有可能超出其包含元素。
+该现象看上去打破了规则，其实从数学上看并没有打破规则。</p>
+
+<div style="width:700px; border:2px solid blue;">
+  <img style="float:left;margin-left:-10px; width:50px;height:50px;" src="./images/logo.png" alt=""> 
+  <div style="background-color:#bce8f1;">
+    <p> The text in this paragraph contains an img element. This element has been given a 
+    height that is larger than a typical line box height for this paragraph. which leads 
+    to some potentially unwanted consequences. The extra space you see between lines of text is to be expected. </p>
+  </div>
+</div>
+
+<h2>浮动元素，内容和重叠</h2>
+
+<p>如果一个浮动元素与正常流中的内容发生了重叠需要怎么显示呢？css2.1澄清了这个问题，并指出了如下规则：1. 行内框与浮动元素重叠时，其边框，背景和内容都在该浮动元素之上显示；
+2. 块框与浮动元素重叠时，其边框和背景在浮动元素之下显示，而内容在浮动元素之上显式。</p>
+
+<h3>浮动元素与行内框重叠</h3>
+
+<div style="width:700px; border:2px solid blue;">
+  <p > The text in this paragraph contains an img element. This element has been given a 
+  <img style="float:left;margin-right:-20px; width:50px;height:50px;" src="./images/logo.png" alt=""> <em style="background-color:#bce096;">larger than a typical line box height for this paragraph. which leads</em> 
+  to some potentially unwanted consequences. The extra space you see between lines of text is to be expected. </p>
+</div>
+
+<h3>浮动元素与块框重叠</h3>
+<div style="width:700px; border:2px solid blue;">
+  <img style="float:left;margin-right:-20px; width:50px;height:50px;" src="./images/logo.png" alt=""> 
+  <div style="background-color:#bce8f1;">
+    <p> The text in this paragraph contains an img element. This element has been given a 
+    height that is larger than a typical line box height for this paragraph. which leads 
+    to some potentially unwanted consequences. The extra space you see between lines of text is to be expected. </p>
+  </div>
+</div>
+
+</body>
+</html>
