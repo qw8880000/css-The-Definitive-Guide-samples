@@ -1,7 +1,18 @@
-# css-sample
+# css-The-Definitive-Guide-samples
 
-* 基本视觉格式化
-    - 块级元素
-    - 行内元素
-    - 改变元素显示
-    - 行内块元素
+阅读《CSS权威指南》时，根据书中的规则与例子所写的练习。
+
+# 内容
+
+* [视觉格式化模型](./visual_formatting_model.html)
+* [视觉格式化 - 块级元素的水平格式化](./block-element-Horizontal.html)
+* [视觉格式化 - 块级元素的垂直格式化](./block-element-Vertical.html)
+* [视觉格式化 - 行内元素的格式化](./inline-element.html)
+* [浮动](./float.html)
+* [定位 - 绝对定位](./position-absolute.html)
+
+
+# 使用
+
+克隆本仓库后，用浏览器直接打开对应的html文件即可。
+
