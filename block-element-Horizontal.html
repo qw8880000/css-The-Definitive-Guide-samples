@@ -1,85 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title></title>
-  <link rel="stylesheet" href="style.css" type="text/css" media="screen" charset="utf-8">
+<meta charset="UTF-8">
+<title></title>
+<link rel="stylesheet" href="style-slate.css" type="text/css" media="screen" charset="utf-8">
+<!-- <link rel="stylesheet" href="style.css" type="text/css" media="screen" charset="utf-8"> -->
 </head>
 <body>
 
-<h1>块级元素的水平格式化</h1>
-
-<h2> 基础规则 </h2>
-
-<img src="./images/box-model-horizontal.png" alt="">
-<p>水平格式化的“7大属性”：margin-left、border-left、padding-left、width、padding-right、border-right和margin-right。</p>
-<p>块级元素的特性是：会在其框之前和之后生成“换行”，如p,div元素。这个特性使块级元素独占一整行，于是有这个的规则：块级元素的左右内边距、边框、外边距和内容宽度的总和等于其包含块的宽度。</p>
-
-<h3>width 用于指定内容区的宽度</h3>
-<div style="width: 200px; background-color: #04b696;">width=200</div>
-
-<h3>可见区域包括 内容区、padding 和 border；margin区域是透明的。</h3>
-<div style="width: 200px; background-color: #04b696; padding:0 10px; margin:0 20px; border:1px solid red;">wideness?</div>
-  
-<h3>正常流中块级元素的水平部分总和等于其包含块的width</h3>
-<div style="width: 500px; border:1px solid red;">parent
-  <div style="width: 200px; background-color: #04b696; padding: 10px; margin: 20px; border:5px solid black;">child</div>
+<!-- HEADER -->
+<div id="header_wrap" class="outer">
+  <header class="inner">
+    <h1>块级元素的水平格式化</h1>
+  </header>
 </div>
 
-<h2>使用auto</h2>
+<!-- MAIN CONTENT -->
+<div id="main_content_wrap" class="outer">
+  <section id="main_content" class="inner">
+    <h2> 基础规则 </h2>
 
-<p> 水平7大属性中，width,margin-left,margin-right这3个属性可以设置为auto，其余必须设置值，或者默认为0 </p>
+    <img src="./images/box-model-horizontal.png" alt="">
+    <p>水平格式化的“7大属性”：margin-left、border-left、padding-left、width、padding-right、border-right和margin-right。</p>
+    <p>块级元素的特性是：会在其框之前和之后生成“换行”，如p,div元素。这个特性使块级元素独占一整行，于是有这个的规则：块级元素的左右内边距、边框、外边距和内容宽度的总和等于其包含块的宽度。</p>
 
-<p>3个都为auto，width会尽可能的宽：</p>
-<div style="width: 500px; border:1px solid red;">parent
-  <div style="width:auto; margin-left:auto; margin-right:auto; border:5px solid black; background-color: #04b696;">child</div>
+    <h3>width 用于指定内容区的宽度</h3>
+    <div style="width: 200px; background-color: #04b696;">width=200</div>
+
+    <h3>可见区域包括 内容区、padding 和 border；margin区域是透明的。</h3>
+    <div style="width: 200px; background-color: #04b696; padding:0 10px; margin:0 20px; border:1px solid red;">wideness?</div>
+
+    <h3>正常流中块级元素的水平部分总和等于其包含块的width</h3>
+    <div style="width: 500px; border:1px solid red;">parent
+      <div style="width: 200px; background-color: #04b696; padding: 10px; margin: 20px; border:5px solid black;">child</div>
+    </div>
+
+    <h2>使用auto</h2>
+
+    <p> 水平7大属性中，width,margin-left,margin-right这3个属性可以设置为auto，其余必须设置值，或者默认为0 </p>
+
+    <p>3个都为auto，width会尽可能的宽：</p>
+    <div style="width: 500px; border:1px solid red;">parent
+      <div style="width:auto; margin-left:auto; margin-right:auto; border:5px solid black; background-color: #04b696;">child</div>
+    </div>
+
+    <p>width显式地设置，其余为auto：</p>
+    <div style="width: 500px; border:1px solid red;">parent
+      <div style="width:200px; margin-left:auto; margin-right:auto; border:5px solid black; background-color: #04b696;">child</div>
+    </div>
+
+    <p>width与margin-left显式的设置，margin-right为auto：</p>
+    <div style="width: 500px; border:1px solid red;">parent
+      <div style="width:200px; margin-left:10px; margin-right:auto; border:5px solid black; background-color: #04b696;">child</div>
+    </div>
+
+    <p>width与margin-right显式的设置，margin-left为auto：</p>
+    <div style="width: 500px; border:1px solid red;">parent
+      <div style="width:200px; margin-left:auto; margin-right:10px; border:5px solid black; background-color: #04b696;">child</div>
+    </div>
+
+    <p>3者都不为auto。这种情况下，这些属性过分受限，此时总会把margin-right设置为auto(从左向右排列时)：</p>
+    <div style="width: 500px; border:1px solid red;">parent
+      <div style="width:200px; margin-left:10px; margin-right:10px; border:5px solid black; background-color: #04b696;">child</div>
+    </div>
+
+    <p>两个外边距显式的设置，width为auto。width将被设置为某个值以达到需要的宽度：</p>
+    <div style="width: 500px; border:1px solid red;">parent
+      <div style="width:auto; margin-left:10px; margin-right:10px; border:5px solid black; background-color: #04b696;">child</div>
+    </div>
+
+
+
+
+    <h2>负外边距</h2>
+
+    <p>负外边距，仍然遵循水平7大属性之和为包含块宽度。</p>
+
+    <p>width为auto，margin-right为负：</p>
+    <div style="width: 500px; border:1px solid red;">parent
+      <div style="width:auto; margin-right:-50px; background-color: #04b696;">child</div>
+    </div>
+
+    <p>width大于包含块，margin为auto时，默认margin-right为负值（从左向右排列情况下）：</p>
+    <div style="width: 500px; border:1px solid red;">parent
+      <div style="width:600px; margin:auto; background-color: #04b696;">child </div>
+    </div>
+
+    <h2> 非替换与替换块级元素的在水平格式化上的区别 </h2>
+
+    <p>非替换块级元素的规则适用于可替换块级元素，只有一个例外：如果width为auto，可替换块级元素的宽度为内容的宽度。</p>
+
+  </section>
 </div>
-
-<p>width显式地设置，其余为auto：</p>
-<div style="width: 500px; border:1px solid red;">parent
-  <div style="width:200px; margin-left:auto; margin-right:auto; border:5px solid black; background-color: #04b696;">child</div>
-</div>
-
-<p>width与margin-left显式的设置，margin-right为auto：</p>
-<div style="width: 500px; border:1px solid red;">parent
-  <div style="width:200px; margin-left:10px; margin-right:auto; border:5px solid black; background-color: #04b696;">child</div>
-</div>
-
-<p>width与margin-right显式的设置，margin-left为auto：</p>
-<div style="width: 500px; border:1px solid red;">parent
-  <div style="width:200px; margin-left:auto; margin-right:10px; border:5px solid black; background-color: #04b696;">child</div>
-</div>
-
-<p>3者都不为auto。这种情况下，这些属性过分受限，此时总会把margin-right设置为auto(从左向右排列时)：</p>
-<div style="width: 500px; border:1px solid red;">parent
-  <div style="width:200px; margin-left:10px; margin-right:10px; border:5px solid black; background-color: #04b696;">child</div>
-</div>
-
-<p>两个外边距显式的设置，width为auto。width将被设置为某个值以达到需要的宽度：</p>
-<div style="width: 500px; border:1px solid red;">parent
-  <div style="width:auto; margin-left:10px; margin-right:10px; border:5px solid black; background-color: #04b696;">child</div>
-</div>
-
-
-
-
-<h2>负外边距</h2>
-
-<p>负外边距，仍然遵循水平7大属性之和为包含块宽度。</p>
-
-<p>width为auto，margin-right为负：</p>
-<div style="width: 500px; border:1px solid red;">parent
-  <div style="width:auto; margin-right:-50px; background-color: #04b696;">child</div>
-</div>
-
-<p>width大于包含块，margin为auto时，默认margin-right为负值（从左向右排列情况下）：</p>
-<div style="width: 500px; border:1px solid red;">parent
-  <div style="width:600px; margin:auto; background-color: #04b696;">child </div>
-</div>
-
-<h2> 非替换与替换块级元素的在水平格式化上的区别 </h2>
-
-<p>非替换块级元素的规则适用于可替换块级元素，只有一个例外：如果width为auto，可替换块级元素的宽度为内容的宽度。</p>
 
 </body>
 </html>
