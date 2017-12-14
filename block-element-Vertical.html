@@ -3,12 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <title></title>
-  <link rel="stylesheet" href="style.css" type="text/css" media="screen" charset="utf-8">
+  <link rel="stylesheet" href="style-slate.css" type="text/css" media="screen" charset="utf-8">
+  <!-- <link rel="stylesheet" href="style.css" type="text/css" media="screen" charset="utf-8"> -->
 </head>
 <body>
 
-<h1>块级元素的垂直格式化</h1>
 
+<!-- HEADER -->
+<div id="header_wrap" class="outer">
+  <header class="inner">
+  <h1>块级元素的垂直格式化</h1>
+  </header>
+</div>
+
+
+<!-- MAIN CONTENT -->
+<div id="main_content_wrap" class="outer">
+  <section id="main_content" class="inner">
 <h2>基础规则</h2>
 
 <img src="./images/box-model-vertical.png" alt="">
@@ -114,6 +125,9 @@
 <div style="width:500px; height: 150px; border: 2px solid black">
   <div style="width:200px; height:50px; margin-top:20px; border: 2px solid #04b696;">div1</div>
   <div style="width:200px; height:50px; margin-top:0; border: 2px solid #547096;">div2</div>
+</div>
+
+  </section>
 </div>
 
 </body>

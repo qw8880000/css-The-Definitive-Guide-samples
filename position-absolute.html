@@ -3,13 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <title></title>
-  <link rel="stylesheet" href="style.css" type="text/css" media="screen" charset="utf-8">
+  <link rel="stylesheet" href="style-slate.css" type="text/css" media="screen" charset="utf-8">
+  <!-- <link rel="stylesheet" href="style.css" type="text/css" media="screen" charset="utf-8"> -->
 </head>
 <body>
 
-<h1>绝对定位</h1>
 
+<!-- HEADER -->
+<div id="header_wrap" class="outer">
+  <header class="inner">
+  <h1>绝对定位</h1>
+  </header>
+</div>
+
+
+<!-- MAIN CONTENT -->
+<div id="main_content_wrap" class="outer">
+  <section id="main_content" class="inner">
 <h2>包含块和绝对定位元素</h2>
+
 <p>元素绝对定位时，会完全从文档流删除，然后相对于其包含块定位，其边界根据偏移属性(left,top等)放置。</p>
 
 <p>对于一个非根元素，如果其position为absolute，包含块为最近的position不是static的祖先元素。如果这个祖先元素是块级元素，包含块则设置为该元素的内边距边界；如果这个祖先是行内元素，包含块则设置为该祖先元素的内容边界。</p>
@@ -124,6 +136,8 @@ left + margin-left + border-left-width + padding-left + width + padding-right + 
 替换元素与非替换元素在绝对定位上的规则基本相同。
 
 
+  </section>
+</div>
 
 </body>
 </html>
