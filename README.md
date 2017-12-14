@@ -1,6 +1,6 @@
 # css-The-Definitive-Guide-samples
 
-阅读《CSS权威指南》时，根据书中的规则与例子所写的练习。
+阅读《CSS权威指南》时，根据书中的规则与例子所写的练习。主要涉及视觉格式化，布局与定位。
 
 # 内容
 
@@ -14,5 +14,6 @@
 
 # 使用
 
-克隆本仓库后，用浏览器直接打开对应的html文件即可。
+克隆本仓库后，用浏览器直接打开对应的html文件即可。也可以在线查看：[css-The-Definitive-Guide-samples](https://qw8880000.github.io/css-The-Definitive-Guide-samples/)
+
 
