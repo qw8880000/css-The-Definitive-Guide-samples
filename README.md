@@ -11,9 +11,3 @@
 * [浮动](./float.html)
 * [定位 - 绝对定位](./position-absolute.html)
 
-
-# 使用
-
-克隆本仓库后，用浏览器直接打开对应的html文件即可。也可以在线查看：[css-The-Definitive-Guide-samples](https://qw8880000.github.io/css-The-Definitive-Guide-samples/)
-
-
