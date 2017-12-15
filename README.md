@@ -11,3 +11,7 @@
 * [浮动](./float.html)
 * [定位 - 绝对定位](./position-absolute.html)
 
+# 使用
+
+打开浏览器的调试模式观察每一个例子。
+
