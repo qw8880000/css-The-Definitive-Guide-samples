@@ -14,6 +14,7 @@
 
 # 使用
 
-克隆本仓库后，用浏览器直接打开对应的html文件即可。也可以在线查看：[css-The-Definitive-Guide-samples](https://qw8880000.github.io/css-The-Definitive-Guide-samples/)
+* 克隆本仓库后，用浏览器直接打开对应的html文件即可。也可以在线查看：[css-The-Definitive-Guide-samples](https://qw8880000.github.io/css-The-Definitive-Guide-samples/)
+* 打开浏览器的调试模式观察每一个例子
 
 
