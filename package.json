@@ -1,0 +1,24 @@
+{
+  "name": "the-definitive-guide-samples",
+  "version": "1.0.0",
+  "description": "阅读《CSS权威指南》时，根据书中的规则与例子所写的练习。主要涉及视觉格式化，布局与定位。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qw8880000/css-The-Definitive-Guide-samples.git"
+  },
+  "keywords": [
+    "css",
+    "bfc",
+    "ifc"
+  ],
+  "author": "nicer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/qw8880000/css-The-Definitive-Guide-samples/issues"
+  },
+  "homepage": "https://github.com/qw8880000/css-The-Definitive-Guide-samples#readme"
+}
