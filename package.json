@@ -4,7 +4,8 @@
   "description": "阅读《CSS权威指南》时，根据书中的规则与例子所写的练习。主要涉及视觉格式化，布局与定位。",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "node_modules/.bin/sass src/scss/app.scss src/css/app.css"
   },
   "repository": {
     "type": "git",
@@ -20,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/qw8880000/css-The-Definitive-Guide-samples/issues"
   },
-  "homepage": "https://github.com/qw8880000/css-The-Definitive-Guide-samples#readme"
+  "homepage": "https://github.com/qw8880000/css-The-Definitive-Guide-samples#readme",
+  "devDependencies": {
+    "sass": "^1.6.1"
+  }
 }
