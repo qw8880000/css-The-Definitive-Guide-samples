@@ -24,7 +24,7 @@
   "homepage": "https://github.com/qw8880000/css-The-Definitive-Guide-samples#readme",
   "private": true,
   "hexo": {
-    "version": ""
+    "version": "3.7.1"
   },
   "devDependencies": {
     "hexo": "^3.2.0",

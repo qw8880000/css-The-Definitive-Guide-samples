@@ -14,3 +14,11 @@ node_modules/
 # sass
 .sass-cache/
 *.css.map
+
+# hexo
+.DS_Store
+Thumbs.db
+db.json
+*.log
+public/
+.deploy*/
