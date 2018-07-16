@@ -1,20 +1,19 @@
 # css-The-Definitive-Guide-samples
 
-阅读《CSS权威指南》时，根据书中的规则与例子所写的练习。主要涉及视觉格式化，布局与定位。
+记录《CSS权威指南》，[css规范2.2](https://www.w3.org/TR/CSS22/Overview.html#minitoc)，[视觉格式化模型 - MDN](https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Visual_formatting_model)的学习心得。
+
 
 # 内容
 
-* [视觉格式化模型](./visual_formatting_model.html)
-* [视觉格式化 - 块级元素的水平格式化](./block-element-Horizontal.html)
-* [视觉格式化 - 块级元素的垂直格式化](./block-element-Vertical.html)
-* [视觉格式化 - 行内元素的格式化](./inline-element.html)
-* [浮动](./float.html)
-* [定位 - 绝对定位](./position-absolute.html)
+* [盒模型与margin合并](./src/box-model.html)
+* [视觉格式化模型](./src/visual-fomatting-model.html)
 
+# Todo
 
-# 使用
+* [] 替换元素与非替换元素
+* [] 浮动
+* [] 绝对定位
+* [] 视觉格式化模型细节
 
-* 克隆本仓库后，用浏览器直接打开对应的html文件即可。也可以在线查看：[css-The-Definitive-Guide-samples](https://qw8880000.github.io/css-The-Definitive-Guide-samples/)
-* 打开浏览器的调试模式观察每一个例子
 
 

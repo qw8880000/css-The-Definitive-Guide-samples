@@ -3,14 +3,172 @@
 <head>
   <meta charset="UTF-8">
   <title>可视化格式模型</title>
+
 </head>
 <body>
 
-<div>
-  <h1>Visual formatting model</h1>
 
-  <h2></h2>
-</div>
+<h1>视觉格式化模型</h1>
+
+<h2>视觉格式化模型简介</h2>
+<p>CSS 视觉格式化模型（visual formatting model）是用户代理处理文档树所使用的计算规则。</p>
+<p>视觉格式化模型会根据CSS盒子模型将文档中的元素转换为一个个盒子，每个盒子的布局由以下因素决定：</p>
+<ul>
+  <li>盒子的尺寸</li>
+  <li>盒子的类型：块级盒子，块容器盒子，行内级盒子等</li>
+  <li>定位方案（positioning scheme）：普通流定位、浮动定位或绝对定位</li>
+  <li>文档树中元素之间的关系</li>
+  <li>其他外部因素（视口大小，图片大小等）</li>
+</ul>
+
+<h3>包含块</h3>
+<p><strong>包含块</strong>：containing block，包含其他盒子的块称为包含块。<a href="https://www.w3.org/TR/CSS22/visudet.html#containing-block-details" target="_blank">Definition of "containing block"</a></p>
+
+<h2>盒子</h2>
+<p>盒子的生成是 CSS 视觉格式化模型的一部分，用于从文档元素生成盒子。盒子有不同的类型，不同类型的盒子的格式化方法也有所不同。盒子的类型取决于 CSS display 属性。</p>
+
+<h3>块级元素与块盒子</h3>
+<ul>
+  <li><strong>块级元素</strong>：block-level element，元素的 <code>display</code> 为
+    <code>block</code>、<code>list-item</code>、<code>table</code> 时，该元素将成为块级元素。
+  </li>
+  <li><strong>块级盒子</strong>：block-level box，由块级元素生成。一个块级元素至少会生成一个块级盒子，但也有可能生成多个（例如列表项元素）。
+    块级盒子会参与到块格式上下文中。
+  </li>
+  <li><strong>块级元素</strong>：block-level element，元素的 <code>display</code> 为
+    <code>block</code>、<code>list-item</code>、<code>table</code> 时，该元素将成为块级元素。
+  </li>
+  <li>
+    <strong>块容器元素</strong>：block container element，元素为不可替换元素，且<code>display</code>为
+    <code>block</code>、<code>list-item</code>、<code>inline-block</code>时，该元素将成为块容器元素。
+  </li>
+  <li>
+    <strong>块容器盒子</strong>：block container box，由块容器元素生成。
+  </li>
+  <li>
+    <strong>块盒子</strong>：block box，如果一个块级盒子同时也是一个块容器盒子，则称其为块盒子。
+    （注意：盒子有“块盒子”、“块级盒子”、“块容器盒子”，但元素只有“块级元素”和“块容器元素”，而没有“块元素”。下面的“行内级元素”也是一样）
+  </li>
+</ul>
+
+<p>
+  一个元素可以是块级元素，可以是块容器元素，也可以即是块级元素又是块容器元素。块级元素生成块级盒子，块容器元素生成块容器盒子，如果一个元素即是块级元素又是块容器元素，
+  那么它生成的盒子即是块级盒子又是块容器盒子，这种盒子叫做块盒子。
+</p>
+<p>
+  块级盒子与块容器盒子的作用是不同的。
+  块级盒子参与到块格式式化上下文中，描述了元素与其父元素和兄弟元素之间的行为，即布局与定位；
+  块容器盒子侧重于当前盒子作为“容器”的这一角色，它不参与当前块的布局和定位，它所描述的仅仅是当前盒子与其后代之间的关系。
+</p>
+
+<h4>匿名块盒子</h4>
+<p>考虑以下代码，假设 div 和 p 都保持默认的样式（即它们的 display 为 block）：</p>
+<img src="images/anonymous_block-level_boxes-code.png">
+<p>这个div中包含了三个盒子，其中一个是p生成的块级盒子，还有两个匿名块盒子。如下图：</p>
+<img src="images/anonymous_block-level_boxes.png">
+<p>显示为：</p>
+<img src="images/anonymous_block-level_boxes_show.png">
+<p>为什么生成匿名块盒子，这是为了更方便布局。换句话说，如果一个块容器盒子中，包含了一个块级盒子，那我们将强制让它只包含块级盒子。</p>
+<p>更详细的说法是：块容器盒子可能只包含行内级盒子，也可能只包含块级盒子，但通常的文档都会同时包含两者，在这种情况下，就会在相邻的行内级盒子外创建匿名块盒子。</p>
+
+<p>下面看一个更复杂的例子，<strong>行内盒子中包含一或多个块盒子</strong>。</p>
+<p>当行内盒子中有一个块级盒子，此时行内盒子会被这个块级盒子拆分为两个行内盒子，分别位于块级盒子的前面和后面。
+  块盒子前面的所有行内盒子会被一个匿名块盒子包裹，块盒子后面的行内盒子也是一样。因此，块盒子将成为这两个匿名块盒子的兄弟盒子。
+</p>
+<p>考虑下面的HTML代码，假设 p 的 display 为 inline，span 的 display 为 block：</p>
+<img src="images/anonymous_block_box_break-code.png">
+<p>此时会产生两个匿名块盒子：一个是 <code>&lt;span&gt;</code>
+  元素前面的文本（<code>Some&nbsp;<em>inline</em>&nbsp;text</code>），另一个是其之后的文本（<code>followed by more inline text.</code>）。此时会生成下面的块结构：
+</p>
+<img src="images/anonymous_block_box_break.png">
+
+<p>显示为：</p>
+<img src="images/anonymous_block_box_break_show.png">
+<p>这些匿名块盒子无法被选择符选中，它们从父元素那里继承那些可继承的属性，其他属性保持默认值 initial。</p>
+
+
+<h3>行内级元素和行内盒子</h3>
+<ul>
+  <li><strong>行内级元素</strong>：inline-level element，<code>display</code> 为
+    <code>inline</code>、<code>inline-block</code>、<code>inline-table</code>
+    的元素称为行内级元素。行内级元素并不形成新的内容块（这句话不知道如何理解）。
+  </li>
+  <li><strong>行内级盒子</strong>：inline-level box，由行内级元素生成，它参与行内格式化上下文。</li>
+  <li><strong>行内盒子</strong>：inline box，由<code>display</code> 为<code>inline</code>的非替换元素所生成的盒子。
+    行内盒子是行内级盒子，并且它的内容参与了它所包含的行内格式化上下文。
+  </li>
+  <li><strong>原子行内级盒子</strong>：atomic inline-level box，行内级盒子中不是行内盒子的，就是原子行内级盒子。
+    例如可替换行内级元素、inline-block元素和inline-table元素所生成的盒子就是原子行内级盒子。
+    原子行内级盒子作为一个不透明盒子参与行内格式化上下文（什么叫不透明盒子？）。
+  </li>
+</ul>
+<h4>匿名行内盒子</h4>
+<p>任何被块容器盒子直接包含的文本，必须视为块容器盒子生成了一个匿名行内盒子来包含这些文本。如下例子：</p>
+<img src="images/anonymous-inline-boxes-code.png">
+<p>上述代码中，p元素生成了一个块盒，块盒里面有几个行内盒。
+  em元素生成了一个行内盒，这个盒子包裹着“emphasized”文字，“Some”和“text”也分别被行内盒包裹，这里的行内盒是匿名行内盒，因为它们并不是直接由对应的行内级元素生成。
+</p>
+<p>这些行内盒子无法被选择符选中，它们从父元素那里继承那些可继承的属性，其他属性保持默认值 initial。</p>
+
+<h3>Run-in 盒子</h3>
+<p>略</p>
+
+<h2>定位规则</h2>
+<p>一旦生成了盒子以后，CSS引擎就需要定位它们以完成布局。下面是定位盒子时所使用的规则：</p>
+<ul>
+  <li>普通流（正常流）：css2.2中普通流包含块级元素的块格式化上下文，行内级元素的行内格式化上下文，以及块级元素与行内级元素的相对定位</li>
+  <li>浮动：将盒子从普通流中单独拎出来，将其放到外层盒子的某一边</li>
+  <li>绝对定位：按照绝对位置来定位盒子，其位置根据其父容器来计算，因此绝对定位元素有可能会覆盖其他元素</li>
+</ul>
+
+<h3>普通流（正常流）</h3>
+<p>在普通流中，盒子会依次放置。在块格式化上下文中，盒子在垂直方向依次排列；而在行内格式化上下文中，盒子则水平排列。当CSS的 position 属性为 static 或 relative，并且 float 为 none
+  时，其布局方式为普通流。</p>
+<h4>块格式化上下文</h4>
+<p>在块格式化上下文中，盒子从包含块的顶部开始，在垂直方向上依次排列，每一个盒子都独占一行。垂直方向上距离由top margin 与bottom margin控制。
+其中垂直方向上的相邻元素的margin会发生margin合并。</p>
+
+<p>float元素，绝对定位元素，非块盒的块容器元素(such as inline-blocks, table-cells, and table-captions)，overflow属性不是visible的元素，它们将生成新的块格式化上下文。</p>
+<h4>行内格式化上下文</h4>
+<p>一个行内格式化上下文，由不包含任何的块级盒子的块容器盒子生成。
+  在一个行内格式化上下文中，从包含块的顶部开始，盒子在水平方向上依次排列。
+  同一行内的多个盒子会被一个方形区域包裹形成一个行，这个方形区域叫做<strong>行盒（line box）</strong>。</p>
+<p>行盒的宽度由包含块或者是否有float属性决定。行盒从包含块的左边一直延伸到最右边，如果具有float属性那么宽度就只剩下包裹子盒子的宽度。</p>
+<p>当行盒中的子行内盒子们的总宽度小于行盒的宽度时，水平方向上的布局受 'text-align' 控制。</p>
+<p>如果某个行内级盒子的宽度超过了行盒，那么超过的部分就会被分配到下一个行盒，类似换行。如果这个行内盒子不允许拆分，这种情况下，这个行内盒子会溢出到行盒的外面。</p>
+<p>行盒的高度参考<a href="https://www.w3.org/TR/CSS22/visudet.html#line-height" target="_blank">line height calculations</a></p>
+
+<h4>相对定位</h4>
+<p>当一个元素是相对定位的时候，可以通过'left''right''top''bottom'属性来调节它相对于原来位置的偏移量。偏移后，元素依然占据流中的位置，这对于兄弟元素或父元素的定位布局来说就好像它从来没有偏移过。</p>
+<p>如下例子：</p>
+<img src="images/position-relative-code.png">
+<p>示意图为：</p>
+<img src="images/position-relative.jpg">
+
+<h3>浮动</h3>
+<p>一个盒子的 float 值不为 none，并且其 position 为 static 或 relative 时，该盒子为浮动定位。浮动定位使元素脱离了普通流。</p>
+<p>一个浮动的盒子，会向左移动或向右移动直到它的外边界碰到包含块的内边界或者其他浮动盒子的外边界。</p>
+<p>如果水平方向上没有足够的空间容纳一个浮动盒子，那么它会向下走直到能容纳下它或者没有其他浮动盒子。</p>
+<p>在正常流中，一个盒子float后便脱离了该流，其他盒子的定位布局不再受它影响就好像它不存在一样。但是浮动盒子周围的行盒（line box）会受影响，就好像行盒的空间被占据了一样，导致行盒看起来是围绕着浮动盒子排列。
+如果行盒被压缩的太小了，不能再容纳里面的内容，那么行盒会向下走，直到有合适的空间。</p>
+
+<p>float的行为遵守以下规则：</p>
+<ol>
+  <li>左浮动元素的左外边界一般不能超出其包含块的左内边界。右浮动同理</li>
+  <li>如果当前元素为左浮动，且源文档有比它更早的左浮动元素，这种情况下，当前元素的左外边界必须靠着更早的浮动元素的右外边界，或者当前元素的上外边界必须低于更早的浮动元素的下外边界。右浮动同理。</li>
+  <li>左浮动元素的右外边界一般不能超过其相邻的右浮动元素的左外边界。右浮动元素的左外边界一般不能超过左浮动元素的右外边界。</li>
+  <li>浮动元素的上外边界一般不能超出其包含块的顶端。</li>
+  <li>浮动元素的上外边界一般不能比源文档中更早出现的所有浮动元素或块级元素的顶端更高。</li>
+  <li>浮动元素的上外边界一般不能比源文档中更早出现的行盒的顶端更高</li>
+  <li>当前左浮动元素的左边有其他左浮动元素，这种情况下，当前元素的右外边界不能超出包含块的右边界</li>
+  <li>浮动元素必须尽可能高的放置。但是受上述7条规则限制</li>
+  <li>左浮动元素必须尽可能左移，右浮动元素尽可能右移。但是受上述7条规则限制</li>
+</ol>
+<p><strong>以上规则都是为了防止浮动元素的重叠。</strong></p>
+
+<h3>绝对定位</h3>
+<p>一个盒子的 position 值为 absolute 或者 fixed，该盒子为绝对定位。绝对定位使元素脱离了普通流。</p>
+<p>详见：<a href="https://www.w3.org/TR/CSS22/visuren.html#absolute-positioning" target="_blank">Absolute positioning</a></p>
 
 </body>
 </html>
