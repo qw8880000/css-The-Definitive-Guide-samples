@@ -9,8 +9,7 @@ tags:
 一个盒子的 'float' 值不为 'none'，并且其 'position' 为 'static' 或 'relative' 时，该盒子为浮动定位。浮动定位使元素脱离了普通流。
 
 在正常流中，一个盒子float后便脱离了该流，其他盒子的定位布局不再受它影响就好像它不存在一样。
-但是浮动盒子周围的行盒（line box）会受影响，就好像行盒的空间被占据了一样，导致行盒看起来是围绕着浮动盒子排列。 
-如果行盒被压缩的太小了，不能再容纳里面的内容，那么行盒会向下走，直到有合适的空间。
+但是浮动盒子周围的行盒（line box）会受影响，就好像行盒的空间被占据了一样，导致行盒看起来是围绕着浮动盒子排列。
 
 如下例子：
 <iframe width="100%" height="300" src="//jsfiddle.net/qw8880000/shgbunqc/3/embedded/html,css,result/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
@@ -18,6 +17,8 @@ tags:
 ![float before](images/float-before.jpg)
 ![float after](images/float-after.jpg)
 
+如果行盒被压缩的太小了，不能再容纳里面的内容，那么行盒会向下走，直到有合适的空间。如下例子：
+<iframe width="100%" height="300" src="//jsfiddle.net/qw8880000/tvo6w5en/embedded/html,css,result/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
 
 一个浮动的盒子，会向左移动或向右移动直到它的**外边界**碰到包含块的**内边界**或者其他浮动盒子的**外边界**。
 
