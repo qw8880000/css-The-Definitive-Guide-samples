@@ -21,7 +21,7 @@ tags:
 <iframe width="100%" height="300" src="//jsfiddle.net/qw8880000/tvo6w5en/embedded/html,css,result/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
 
 一个浮动的盒子，会向左移动或向右移动直到它的**外边界**碰到包含块的**内边界**或者其他浮动盒子的**外边界**。
-
+<iframe width="100%" height="300" src="//jsfiddle.net/qw8880000/f2eo96gb/embedded/html,css,result/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
 
 如果水平方向上没有足够的空间容纳一个浮动盒子，那么它会向下走直到能容纳下它或者没有其他浮动盒子。
 
