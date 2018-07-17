@@ -14,6 +14,10 @@ tags:
 
 如下例子：
 <iframe width="100%" height="300" src="//jsfiddle.net/qw8880000/shgbunqc/3/embedded/html,css,result/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+`<div>`浮动后可以看到，`<p>`元素跑到了`<div>`的下方，因为`<div>`脱离了普通流；还有一个现象是文字围绕着`<div>`，因为行盒受到浮动元素的影响被压缩了，如下示意图：
+![float before](images/float-before.jpg)
+![float after](images/float-after.jpg)
+
 
 一个浮动的盒子，会向左移动或向右移动直到它的**外边界**碰到包含块的**内边界**或者其他浮动盒子的**外边界**。
 
