@@ -136,4 +136,124 @@ float元素，绝对定位元素，非块盒的块容器元素(such as inline-bl
 
 ## 绝对定位
 
-一个盒子的 position 值为 absolute 或者 fixed，该盒子为绝对定位。绝对定位使元素脱离了普通流。
+一个盒子的 position 值为 absolute 或者 fixed，该盒子为绝对定位。绝对定位使元素完全脱离了普通流。
+
+# 'display', 'position', 和 'float'的比较
+
+'display', 'position', 和 'float'影响了盒子的生成与布局，它们存在相互作用：
+* 如果 'display'是 'none' ，'position' 和 'float'不起作用。这种情况下，元素不生成任何盒子，相当于不存在。
+* 除上述情况之外，如果'position' 是 'absolute' 或者 'fixed'，'float'不起作用，'display'的最终属性根据下表决定。此盒子将根据 'top', 'right', 'bottom' and 'left' 和包含块进行定位。
+* 除上述情况之外，如果'float'不是'none'，'display'的最终属性根据下表决定。
+
+|指定值 | 最终值 |
+|---|---|
+|inline-table|table|
+|inline, table-row-group, table-column, table-column-group, table-header-group, table-footer-group, table-row, table-cell, table-caption, inline-block|block|
+|others|same as specified|
+
+# 普通流，浮动 和 绝对定位 的比较
+
+我们通过以下代码来演示普通流，浮动和绝对定位。
+```html
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<HTML>
+  <HEAD>
+    <TITLE>Comparison of positioning schemes</TITLE>
+  </HEAD>
+  <BODY>
+    <P>Beginning of body contents.
+      <SPAN id="outer"> Start of outer contents.
+      <SPAN id="inner"> Inner contents.</SPAN>
+      End of outer contents.</SPAN>
+      End of body contents.
+    </P>
+  </BODY>
+</HTML>
+```
+
+```css
+body { display: block; font-size:12px; line-height: 200%; 
+       width: 400px; height: 400px }
+p    { display: block }
+span { display: inline }
+```
+
+## 普通流
+
+考虑以下css代码：
+```css
+#outer { color: red }
+#inner { color: blue }
+```
+
+`p`元素包含的内容全是行内内容：一些匿名文本与2个`span`元素。因此，`p`元素中的所有内容将会分布在同一个行内格式化上下文中，并且`p`元素生成了一个包含块。显示效果类似：
+![flow-generic](images/flow-generic.png)
+
+## 相对定位
+
+为了观察相对定位，我们使用以下代码：
+```css
+#outer { position: relative; top: -12px; color: red }
+#inner { position: relative; top: 12px; color: blue }
+```
+
+__outer__元素包含的文本（分布在第一行到第三行）均向上偏移了`-12px`。
+__inner__元素中的文本，在__outer__元素定位完成后进行定位。__inner__元素的父元素是__outer__，它的行为是先随着父元素向上偏移了`-12px`，然后自己偏移了`12px`，于是它回到了原来的位置。
+显示效果类似：
+![flow-relative](images/flow-relative.png)
+
+## 浮动
+
+为了观察浮动，我们浮动__inner__元素，考虑以下代码：
+```css
+#outer { color: red }
+#inner { float: right; width: 130px; color: blue }
+```
+
+元素右浮动，效果类型：
+![flow-float](images/flow-float.png)
+
+## 绝对定位 
+
+为了观察绝对定位，考虑以下代码：
+```css
+#outer { 
+    position: absolute; 
+    top: 200px; left: 200px; 
+    width: 200px; 
+    color: red;
+}
+#inner { color: blue }
+```
+
+上述情况中，__outer__元素为绝对定位，它将根据它的包含块来定位，这里离它最近的包含块为初始包含块（initial containing block）。效果类似：
+![flow-absolute](images/flow-absolute.png)
+
+假如绝对定位元素是行内元素的子元素的情况，我们考虑以下代码：
+```css
+#outer { 
+  position: relative; 
+  color: red 
+}
+#inner { 
+  position: absolute; 
+  top: 200px; left: -100px; 
+  height: 130px; width: 130px; 
+  color: blue;
+}
+```
+__inner__为绝对定位，__outer__为相对定位，所以__outer__是__inner__的包含块。outer元素被拆分成了三行，inner元素根据第一行的位置来进行定位。效果类似：
+![flow-abs-rel](images/flow-abs-rel.png)
+
+如果不设置__outer__相对定位，考虑如下代码：
+```css
+#outer { color: red }
+#inner {
+  position: absolute; 
+  top: 200px; left: -100px; 
+  height: 130px; width: 130px; 
+  color: blue;
+}
+```
+此时__inner__的包含块为初始包含块（initial containing block），定位效果类似：
+![flow-static](images/flow-static.png)
