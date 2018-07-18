@@ -1,5 +1,5 @@
 ---
-title: box-model
+title: 盒模型
 date: 2018-07-17 09:22:57
 tags:
 ---
@@ -64,7 +64,7 @@ example:
 <iframe width="100%" height="300" src="//jsfiddle.net/qw8880000/g59pserd/embedded/html,css,result/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
 
 如果元素是inline-block，那么外边距合并会失效，因为inline-block生成的是行格式化上下文。如下例子：
-<iframe width="100%" height="300" src="//jsfiddle.net/qw8880000/urq2txn9/embedded/html,css,result/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+<iframe width="100%" height="300" src="//jsfiddle.net/qw8880000/asrop9cn/embedded/html,css,result/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
 
 如果父元素的overflow属性不是visible，那么外边距合并会失效。如下例子：
 <iframe width="100%" height="300" src="//jsfiddle.net/qw8880000/xyna287w/embedded/html,css,result/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
