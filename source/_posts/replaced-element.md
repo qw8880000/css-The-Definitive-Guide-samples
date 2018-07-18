@@ -18,3 +18,5 @@ CSS 里，**可替换元素（replaced element）**的展现不是由CSS来控�
 * `<canvas>`
 * `<object>`
 * `<applet>`
+
+`<textarea>`和一些`<input>`类型也是可替换元素。
