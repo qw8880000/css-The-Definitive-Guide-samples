@@ -139,4 +139,14 @@ tags:
 
 # height 与 margin 的计算
 
+## 行内非可替换元素
+
+'height'不起作用。内容部分的高度由font决定。
+
+'margin-left' 与 'margin-bottom' 不起作用。
+
+垂直方向上的margin，border 与 padding对行盒的高度没有影响，行盒高度的计算只与 'line-height' 有关。
+
+<iframe width="100%" height="300" src="//jsfiddle.net/qw8880000/n6ywtze4/embedded/html,css,result/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+
 # line-height 与 vertical-align
