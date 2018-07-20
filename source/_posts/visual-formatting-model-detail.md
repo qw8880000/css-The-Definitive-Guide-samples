@@ -99,23 +99,22 @@ tags:
 'left', 'width', and 'right' 都是 'auto'：
 * 首先，把是auto的'margin-left' 和 'margin-right' 计算为0；
 * 然后'left'计算为元素在static positon时的值
-* 接着'width'设置为刚好容纳元素内容的值
-* 最后按公式计算出'right'的值
+* 最后根据下面的规则3计算'width'与'right'
 
 'left', 'width', and 'right' 都不是 'auto'，且'margin-left' and 'margin-right' 全是 'auto'，那么根据公式求出剩余空间，然后'margin-left' and 'margin-right'平分空间；
 如果计算结果为负数，那么'margin-left'设置为0，'margin-right'重新计算。
 
 'left', 'width', and 'right' 都不是 'auto'，'margin-left' and 'margin-right' 其中之一是 'auto'，直接根据公式即可求得auto的最终使用值。
 
-'left', 'width', 'right', 'margin-left' 和 'margin-right' 都不为'auto'，此时就会出现过度受限的情况。 此时会修改right的值，或者忽略right值。
+'left', 'width', 'right', 'margin-left' 和 'margin-right' 都不为'auto'，此时就会出现过度受限的情况。 此时会重新计算right的值来使公式成立。
 
 除上述情况之外，把值为'auto'的'margin-left' 或 'margin-right' 设置为0，然后套用以下规则：
-* 'left' 和 'width' 是 'auto' 且 'right' 不是 'auto'，'width' 设置为刚好容纳内容，然后根据公式计算 'left'
-* 'left' 和 'right' 是 'auto' 且 'width' 不是 'auto'，'left' 设置为元素在static positon时的值，然后根据公式计算 'right'
-* 'width' 和 'right' 是 'auto' 且 'left' 不是 'auto'，'width' 设置为刚好容纳内容，然后根据公式计算 'right'
-* 'left' 是 'auto', 'width' 和 'right' 不是 'auto', 根据公式直接计算 'left'
-* 'width' 是 'auto', 'left' 和 'right' 不是 'auto', 根据公式直接计算 'width'
-* 'right' 是 'auto', 'left' 和 'width' 不是 'auto', 根据公式直接计算 'right'
+1. 'left' 和 'width' 是 'auto' 且 'right' 不是 'auto'，'width' 设置为刚好容纳内容，然后根据公式计算 'left'
+2. 'left' 和 'right' 是 'auto' 且 'width' 不是 'auto'，'left' 设置为元素在static positon时的值，然后根据公式计算 'right'
+3. 'width' 和 'right' 是 'auto' 且 'left' 不是 'auto'，'width' 设置为刚好容纳内容，然后根据公式计算 'right'
+4. 'left' 是 'auto', 'width' 和 'right' 不是 'auto', 根据公式直接计算 'left'
+5. 'width' 是 'auto', 'left' 和 'right' 不是 'auto', 根据公式直接计算 'width'
+6. 'right' 是 'auto', 'left' 和 'width' 不是 'auto', 根据公式直接计算 'right'
 
 <iframe width="100%" height="300" src="//jsfiddle.net/qw8880000/78rs9jz6/embedded/html,css,result/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
 
@@ -149,4 +148,82 @@ tags:
 
 <iframe width="100%" height="300" src="//jsfiddle.net/qw8880000/n6ywtze4/embedded/html,css,result/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
 
+## 普通流，行内可替换元素，块级可替换元素，'inline-block'可替换元素 得 浮动的可替换元素
+
+'margin-left' 与 'margin-bottom' 为 'auto'时，最终使用值为 0。
+
+'height' 为 'auto' 时，如果：
+* 'width' 为 'auto' 且 元素内容有指定高度，那么元素的高度等于内容的高度
+* 'width' 为 'auto' 且 元素内空没有指定高度，但是元素内容有指定宽度与长宽比(ratio)，那么元素的高度等于：`(内容的width) / ratio`
+* 'height'不为'auto' 且 元素的内容有指定长宽比(ratio)，那么元素的宽度等于`width / ratio`
+* 如果以上情况都不符合，那按照2:1的长宽比使'height'尽可能的大，'height'不能超过150px，且计算出来的width不能超过设备的宽度
+
+<iframe width="100%" height="300" src="//jsfiddle.net/qw8880000/d6xtpqk1/embedded/html,css,result/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+
+## 普通流中，'overflow'最终使用值为'visible'的块级非替换元素
+
+'margin-left' 与 'margin-bottom' 为 'auto'时，最终使用值为 0。
+
+'height'为auto时，高度根据它包含的子元素还有它自身的padding与border来计算。高度的计算是从元素的上内容边距到以下其中一种情况的距离：
+1. 最后一个行盒的底边
+1. 最后一个元素的外边界，如果没有发生外边距合并的话
+1. 最后一个元素的边框，如果发生外边距合并的话
+
+总的来说，'heigh'为'auto'的目的是元素的高度刚好包裹子元素。
+
+上述计算的是普通流中的子元素，float与绝对定位的不考虑。
+
+## 绝对定位的非替换元素
+
+以下说到的static positon为元素未绝对定位前，在普通流中的位置。
+
+绝对定位的非替换元素在垂直方向上的尺寸有以下规则：
+> 'top' + 'margin-top' + 'border-top-width' + 'padding-top' + 'height' + 'padding-bottom' + 'border-bottom-width' + 'margin-bottom' + 'bottom' = 包含块的高度
+
+如果 'top', 'height' 和 'bottom' 都是 auto ， 设置'top'为static position时的位置，然后根据下面的规则 3计算出'height'与'bottom'。
+
+如果 'top', 'height' 和 'bottom' 都不是 auto ，且 'margin-top' 和 'margin-bottom' 都是 'auto'，使用公式计算出剩余空间然后二者平分剩余空间。
+
+如果 'top', 'height' 和 'bottom' 都不是 auto ，且 'margin-top' 和 'margin-bottom' 之一是 'auto'，直接使用公式计算出该auto的最终使用值。
+
+如果 'top', 'height' 和 'bottom' 都不是 auto ，且 'margin-top' 和 'margin-bottom' 也都不是 'auto'，这种情况称为过分约束，'bottom'将会重新计算从而使公式成立。
+
+除以上情况之外，把值为'auto'的'margin-top' 或 'margin-bottom'置为0，然后套用以下规则计算：
+1. 'top' 和 'height' 是 'auto' 且 'bottom' 不是 'auto'， 'height'为刚好容纳内容，然后计算出'top'
+2. 'top' 和 'bottom' 是 'auto' 且 'height' 不是 'auto'， 'top' 置为它在static position时的位置，然后用公式计算出'bottom'
+3. 'height' 和 'bottom' 是 'auto' 且 'top' 不是 'auto'， 'height'为刚好容纳内容，然后计算出'bottom'
+4. 'top' 是 'auto', 'height' 和 'bottom' 不是 'auto'，直接用公式计算出'top'
+5. 'height' 是 'auto', 'top' 和 'bottom' 不是 'auto'，直接用公式计算出'height'
+6. 'bottom' 是 'auto', 'top' 和 'height' 不是 'auto'，直接用公式计算出'bottom'
+
+以上'height'为刚好容纳内容的计算方法参考 块级格式化上下文的auto height。
+
+## 绝对定位的可替换元素
+
+'height'的计算参考行内可替换元素的计算方法，然后 绝对定位的非可替换元素 的规则与约束条件基本适用。
+
+## 复杂情况
+
+本章节适用于：
+* 普通流中，'overflow'最终使用值不是'visible' 的块级非替换元素（除了'overflow'是作用在viewport上的情况）
+* 'Inline-block'，非替换元素
+* 浮动的非替换元素
+
+'margin-left' 与 'margin-bottom' 为 'auto'时，最终使用值为 0。
+
+'height' 参考 块级格式化上下文的auto height。
+
+对于'inline-block'元素，它的margin有用于计算它在行盒中占的高度。
+
+## 块级格式化上下文的auto height
+
+对于一个发布了块格式化上下文的元素(如绝对定位非替换元素，float，inline-block等)，它的'height'为'auto'时，高度的计算方法如下：
+
+* 如果子元素都是包含行内级元素，那么高度是从最顶上的行盒的顶端到最底下的行盒的底端
+* 如果子元素包含块级元素，那么高度是从最顶上的子元素的上边界到最底下的子元素的下边界
+* 忽略绝对定位的子元素，相对定位子元素看成是没有发生过偏移
+* 除此之外，如果有浮动的子元素，它的下外边界在元素的内容边界之外，那么元素的高度需要增加以容纳浮动元素的下外边界。
+
 # line-height 与 vertical-align
+
+略
