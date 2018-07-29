@@ -1,0 +1,22 @@
+#index-main {
+  display: block;
+  
+  width: auto;
+  height: 100%;
+  margin-left: 10rem;
+  margin-right: 10rem;
+
+  background-color: $white;
+}
+
+.index-post-list {
+  list-style: none;
+  font-size: 2rem;
+}
+
+.index-post-list-item {
+}
+
+.index-post-list-link {
+  color: theme-color("dark");
+}

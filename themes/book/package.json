@@ -1,0 +1,20 @@
+{
+  "name": "hexo-theme-book",
+  "version": "1.0.0",
+  "description": "A hexo theme named book",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "hexo",
+    "theme"
+  ],
+  "author": "好好编程",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-sass": "^4.0.1",
+    "gulp-sourcemaps": "^2.6.4"
+  }
+}
