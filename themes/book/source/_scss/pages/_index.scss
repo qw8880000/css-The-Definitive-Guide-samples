@@ -1,12 +1,22 @@
-#index-main {
+.index-main {
   display: block;
-
-  width: auto;
   min-height: 100%;
-  margin-left: 10rem;
-  margin-right: 10rem;
-
   background-color: $white;
+}
+
+.index-main-inner {
+  max-width: 38rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.index-header {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  font-size: 3rem;
+  text-align: center;
+  background-color: $header-color;
+  color: color-yiq($header-color);
 }
 
 .index-post-wrapper {
