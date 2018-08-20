@@ -2,16 +2,18 @@
   display: block;
 
   width: auto;
-  height: 100%;
+  min-height: 100%;
   margin-left: 10rem;
   margin-right: 10rem;
 
   background-color: $white;
 }
 
+.index-post-wrapper {
+
+}
+
 .index-post-list {
-  list-style: none;
-  font-size: 2rem;
 }
 
 .index-post-list-item {
