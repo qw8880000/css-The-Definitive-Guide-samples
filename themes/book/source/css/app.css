@@ -3724,6 +3724,18 @@ body {
   background-color: #dee2e6;
 }
 
+.index-header {
+  background-color: #009587;
+}
+
+.index-header-inner {
+  width: 38rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
 .index-main {
   display: block;
   min-height: 100%;
@@ -3731,22 +3743,16 @@ body {
 }
 
 .index-main-inner {
-  max-width: 38rem;
+  width: 38rem;
   margin-left: auto;
   margin-right: auto;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 
-.index-header {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
+.index-title {
   font-size: 3rem;
-  text-align: center;
-  background-color: #009587;
   color: #fff;
-}
-
-.index-post-list-link {
-  color: #343a40;
 }
 
 /*# sourceMappingURL=app.css.map */

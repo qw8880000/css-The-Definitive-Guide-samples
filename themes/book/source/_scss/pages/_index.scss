@@ -1,3 +1,15 @@
+.index-header {
+  background-color: $index-header-color;
+}
+
+.index-header-inner {
+  width: $index-content-width;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
 .index-main {
   display: block;
   min-height: 100%;
@@ -5,30 +17,14 @@
 }
 
 .index-main-inner {
-  max-width: 38rem;
+  width: $index-content-width;
   margin-left: auto;
   margin-right: auto;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 
-.index-header {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
+.index-title {
   font-size: 3rem;
-  text-align: center;
-  background-color: $header-color;
-  color: color-yiq($header-color);
-}
-
-.index-post-wrapper {
-
-}
-
-.index-post-list {
-}
-
-.index-post-list-item {
-}
-
-.index-post-list-link {
-  color: theme-color("dark");
+  color: $index-title-color;
 }
