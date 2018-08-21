@@ -37,5 +37,8 @@
     "hexo-renderer-marked": "^0.3.0",
     "hexo-server": "^0.2.0",
     "sass": "^1.6.1"
+  },
+  "dependencies": {
+    "hexo-cli": "^1.1.0"
   }
 }
