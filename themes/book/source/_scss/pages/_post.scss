@@ -1,5 +1,10 @@
+.post-header {
+  display: block;
+  background-color: $post-header-bg-color;
+}
+
 .post-main {
-  margin-left: 100px;
-  margin-right: 100px;
-  background-color: $white;
+  display: block;
+  min-height: 100%;
+  background-color: $post-main-bg-color;
 }

@@ -1,9 +1,21 @@
-$primary: #009587;
-$white: #fff;
+//
+// common
+//
+$header-bg-color: $cyan;
+$main-bg-color: $white;
+$content-width: 38rem;
+
 
 //
 // index
 //
-$index-content-width: 38rem;
-$index-header-color: $primary;
+$index-content-width: $content-width;
+$index-header-bg-color: $header-bg-color;
+$index-main-bg-color: $main-bg-color;
 $index-title-color: $white;
+
+//
+// post
+//
+$post-header-bg-color: $header-bg-color;
+$post-main-bg-color: $main-bg-color;

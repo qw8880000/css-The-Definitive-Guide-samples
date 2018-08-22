@@ -1,4 +1,24 @@
-<div class="post-main">
-  <%- page.content %>
-</div>
+<header class="post-header">
+  <div class="post-title"><%- page.title %></div>
+</header>
+
+<main class="post-main">
+  <!--sidebar-->
+  <div class="post-sidebar">
+    <button> <a href="/">返回主页</a> </button>
+
+    <!--table of content-->
+    <div class="post-toc-wrapper"><%- toc(page.content, {list_number: true, class: 'post-toc'}) %></div>
+
+    <!--about me-->
+    <div class="post-about-me">about me</div>
+  </div>
+
+  <!--content-->
+  <div class="post-content"><%- page.content %></div>
+</main>
+
+<footer class="post-footer">
+  This is footer
+</footer>
 
