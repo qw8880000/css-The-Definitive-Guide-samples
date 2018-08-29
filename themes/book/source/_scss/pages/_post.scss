@@ -1,10 +1,37 @@
+.post-wrapper {
+  width: $post-wrapper-width;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: $space-normal;
+}
+
 .post-header {
   display: block;
   background-color: $post-header-bg-color;
 }
 
+.post-title {
+  font-size: 3rem;
+  line-height: 10rem;
+  text-align: center;
+  color: $post-title-color;
+}
+
 .post-main {
-  display: block;
-  min-height: 100%;
-  background-color: $post-main-bg-color;
+  display: flex;
+  align-items: start;
+  width: 100%;
+  margin-top: $space-normal;
+}
+
+.post-sidebar {
+  width: $post-sidebar-width;
+  background-color: $post-sidebar-bg-color;
+}
+
+.post-content {
+  width: $post-content-width;
+  margin-left: auto;
+  padding: $space-normal;
+  background-color: $post-content-bg-color;
 }

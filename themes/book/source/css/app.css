@@ -3725,6 +3725,7 @@ body {
 }
 
 .index-header {
+  display: block;
   background-color: #17a2b8;
 }
 
@@ -3753,6 +3754,44 @@ body {
 .index-title {
   font-size: 3rem;
   color: #fff;
+}
+
+.post-wrapper {
+  width: 58rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+}
+
+.post-header {
+  display: block;
+  background-color: #17a2b8;
+}
+
+.post-title {
+  font-size: 3rem;
+  line-height: 10rem;
+  text-align: center;
+  color: #fff;
+}
+
+.post-main {
+  display: flex;
+  align-items: start;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.post-sidebar {
+  width: 15rem;
+  background-color: #17a2b8;
+}
+
+.post-content {
+  width: 42rem;
+  margin-left: auto;
+  padding: 1rem;
+  background-color: #fff;
 }
 
 /*# sourceMappingURL=app.css.map */

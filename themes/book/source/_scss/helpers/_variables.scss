@@ -3,19 +3,26 @@
 //
 $header-bg-color: $cyan;
 $main-bg-color: $white;
-$content-width: 38rem;
+$sidebar-width: 15rem;
+$title-color: $white;
 
+$space-normal: 1rem;
 
 //
 // index
 //
-$index-content-width: $content-width;
+$index-content-width: 38rem;
 $index-header-bg-color: $header-bg-color;
 $index-main-bg-color: $main-bg-color;
-$index-title-color: $white;
+$index-title-color: $title-color;
 
 //
 // post
 //
+$post-sidebar-width: $sidebar-width;
+$post-content-width: 42rem;
+$post-wrapper-width: $post-sidebar-width + $post-content-width + 1rem;
 $post-header-bg-color: $header-bg-color;
-$post-main-bg-color: $main-bg-color;
+$post-content-bg-color: $main-bg-color;
+$post-sidebar-bg-color: $header-bg-color;
+$post-title-color: $title-color;
