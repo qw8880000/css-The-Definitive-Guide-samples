@@ -45,7 +45,7 @@ CSS 视觉格式化模型（visual formatting model）是用户代理处理文�
 ```
 
 这个div中包含了三个盒子，其中一个是p生成的块级盒子，还有两个匿名块盒子。如下图：
-![anonymous block-level boxes](/images/anonymous_block-level_boxes.png)
+![anonymous block-level boxes](/images/post/anonymous_block-level_boxes.png)
 
 为什么生成匿名块盒子，这是为了更方便布局。换句话说，如果一个块容器盒子中，包含了一个块级盒子，那我们将强制让它只包含块级盒子。
 
@@ -60,7 +60,7 @@ CSS 视觉格式化模型（visual formatting model）是用户代理处理文�
 <p>Some <em>inline</em> text <span>followed by a paragraph</span> followed by more inline text.</p>
 ```
 此时会产生两个匿名块盒子：一个是` <span> `元素前面的文本（`Some inline text`），另一个是其之后的文本（`followed by more inline text.`）。此时会生成下面的块结构：
-![anonymous block box break](/images/anonymous_block_box_break.png)
+![anonymous block box break](/images/post/anonymous_block_box_break.png)
 
 这些匿名块盒子无法被选择符选中，它们从父元素那里继承那些可继承的属性，其他属性保持默认值 initial。
 
@@ -129,7 +129,7 @@ float元素，绝对定位元素，非块盒的块容器元素(such as inline-bl
 ```
 
 示意图为：
-![position relative](/images/position-relative.jpg)
+![position relative](/images/post/position-relative.jpg)
 
 ## 浮动
 
@@ -188,7 +188,7 @@ span { display: inline }
 ```
 
 `p`元素包含的内容全是行内内容：一些匿名文本与2个`span`元素。因此，`p`元素中的所有内容将会分布在同一个行内格式化上下文中，并且`p`元素生成了一个包含块。显示效果类似：
-![flow-generic](/images/flow-generic.png)
+![flow-generic](/images/post/flow-generic.png)
 
 ## 相对定位
 
@@ -201,7 +201,7 @@ span { display: inline }
 __outer__元素包含的文本（分布在第一行到第三行）均向上偏移了`-12px`。
 __inner__元素中的文本，在__outer__元素定位完成后进行定位。__inner__元素的父元素是__outer__，它的行为是先随着父元素向上偏移了`-12px`，然后自己偏移了`12px`，于是它回到了原来的位置。
 显示效果类似：
-![flow-relative](/images/flow-relative.png)
+![flow-relative](/images/post/flow-relative.png)
 
 ## 浮动
 
@@ -212,7 +212,7 @@ __inner__元素中的文本，在__outer__元素定位完成后进行定位。__
 ```
 
 元素右浮动，效果类型：
-![flow-float](/images/flow-float.png)
+![flow-float](/images/post/flow-float.png)
 
 ## 绝对定位 
 
@@ -228,7 +228,7 @@ __inner__元素中的文本，在__outer__元素定位完成后进行定位。__
 ```
 
 上述情况中，__outer__元素为绝对定位，它将根据它的包含块来定位，这里离它最近的包含块为初始包含块（initial containing block）。效果类似：
-![flow-absolute](/images/flow-absolute.png)
+![flow-absolute](/images/post/flow-absolute.png)
 
 假如绝对定位元素是行内元素的子元素的情况，我们考虑以下代码：
 ```css
@@ -244,7 +244,7 @@ __inner__元素中的文本，在__outer__元素定位完成后进行定位。__
 }
 ```
 __inner__为绝对定位，__outer__为相对定位，所以__outer__是__inner__的包含块。outer元素被拆分成了三行，inner元素根据第一行的位置来进行定位。效果类似：
-![flow-abs-rel](/images/flow-abs-rel.png)
+![flow-abs-rel](/images/post/flow-abs-rel.png)
 
 如果不设置__outer__相对定位，考虑如下代码：
 ```css
@@ -257,4 +257,4 @@ __inner__为绝对定位，__outer__为相对定位，所以__outer__是__inner_
 }
 ```
 此时__inner__的包含块为初始包含块（initial containing block），定位效果类似：
-![flow-static](/images/flow-static.png)
+![flow-static](/images/post/flow-static.png)

@@ -7,7 +7,7 @@ categories: css specification
 
 # 盒模型
 
-![box model](/images/boxdim.png)
+![box model](/images/post/boxdim.png)
 
 * **Margin(外边距)** - 边框外的区域，外边距是透明的。
 * **Border(边框)** - 围绕在内边距和内容外的边框。

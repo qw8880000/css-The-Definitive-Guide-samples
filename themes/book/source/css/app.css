@@ -3772,7 +3772,6 @@ body {
   font-size: 3rem;
   line-height: 10rem;
   text-align: center;
-  color: #fff;
 }
 
 .post-main {
@@ -3792,6 +3791,27 @@ body {
   margin-left: auto;
   padding: 1rem;
   background-color: #fff;
+}
+
+.post-author {
+  width: 100%;
+  text-align: center;
+}
+
+.post-author-avatar {
+  display: block;
+  width: 7rem;
+}
+
+.post-author-name {
+  color: #fff;
+}
+
+.footer {
+  padding: 2rem;
+  text-align: center;
+  color: #fff;
+  background-color: #17a2b8;
 }
 
 /*# sourceMappingURL=app.css.map */

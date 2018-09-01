@@ -15,8 +15,8 @@ categories: css specification
 如下例子：
 <iframe width="100%" height="300" src="//jsfiddle.net/qw8880000/shgbunqc/embedded/html,css,result/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
 `<div>`浮动后可以看到，`<p>`元素跑到了`<div>`的下方，因为`<div>`脱离了普通流；还有一个现象是文字围绕着`<div>`，因为行盒受到浮动元素的影响被压缩了，如下示意图：
-![float before](/images/float-before.jpg)
-![float after](/images/float-after.jpg)
+![float before](/images/post/float-before.jpg)
+![float after](/images/post/float-after.jpg)
 
 如果行盒被压缩的太小了，不能再容纳里面的内容，那么行盒会向下走，直到有合适的空间。如下例子：
 <iframe width="100%" height="300" src="//jsfiddle.net/qw8880000/tvo6w5en/embedded/html,css,result/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>

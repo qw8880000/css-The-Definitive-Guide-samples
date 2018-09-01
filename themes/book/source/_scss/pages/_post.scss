@@ -14,7 +14,7 @@
   font-size: 3rem;
   line-height: 10rem;
   text-align: center;
-  color: $post-title-color;
+  //color: $post-title-color;
 }
 
 .post-main {
@@ -34,4 +34,23 @@
   margin-left: auto;
   padding: $space-normal;
   background-color: $post-content-bg-color;
+}
+
+.post-author {
+  width: 100%;
+  text-align: center;
+}
+
+.post-author-avatar {
+  display: block;
+  width: 7rem;
+  margin: auto;
+}
+
+.post-author-name {
+  color: $white;
+}
+
+.post-social-info {
+
 }

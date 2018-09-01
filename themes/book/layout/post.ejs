@@ -1,8 +1,4 @@
 <div class="post-wrapper">
-  <header class="post-header">
-    <div class="post-title"><%- page.title %></div>
-  </header>
-
   <main class="post-main">
     <!--sidebar-->
     <div class="post-sidebar">
@@ -12,15 +8,25 @@
       <div class="post-toc-wrapper"><%- toc(page.content, {list_number: true, class: 'post-toc'}) %></div>
 
       <!--about me-->
-      <div class="post-about-me"></div>
+      <div class="post-about-me">
+        <div class="post-author">
+          <img class="post-author-avatar" src="/images/avatar.gif">
+          <span class="post-author-name"><%- theme.author.name %></span>
+        </div>
+
+        <div class="post-social-info">
+          <a href="" target="_blank" title=""><i class=""></i>GitHub</a>
+        </div>
+      </div>
     </div>
 
     <!--content-->
-    <div class="post-content"><%- page.content %></div>
+    <div class="post-content">
+      <div class="post-title"><%- page.title %></div>
+      <%- page.content %>
+    </div>
   </main>
 
-  <footer class="post-footer">
-    This is footer
-  </footer>
+  <%- partial('_partials/footer') %>
 
 </div>

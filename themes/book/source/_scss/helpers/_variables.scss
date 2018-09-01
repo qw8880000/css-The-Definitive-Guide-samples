@@ -1,9 +1,11 @@
 //
 // common
 //
-$header-bg-color: $cyan;
-$main-bg-color: $white;
+$bg-color-1: $cyan;
+$bg-color-2: $white;
+
 $sidebar-width: 15rem;
+
 $title-color: $white;
 
 $space-normal: 1rem;
@@ -12,8 +14,8 @@ $space-normal: 1rem;
 // index
 //
 $index-content-width: 38rem;
-$index-header-bg-color: $header-bg-color;
-$index-main-bg-color: $main-bg-color;
+$index-header-bg-color: $bg-color-1;
+$index-main-bg-color: $bg-color-2;
 $index-title-color: $title-color;
 
 //
@@ -22,7 +24,7 @@ $index-title-color: $title-color;
 $post-sidebar-width: $sidebar-width;
 $post-content-width: 42rem;
 $post-wrapper-width: $post-sidebar-width + $post-content-width + 1rem;
-$post-header-bg-color: $header-bg-color;
-$post-content-bg-color: $main-bg-color;
-$post-sidebar-bg-color: $header-bg-color;
+$post-header-bg-color: $bg-color-1;
+$post-content-bg-color: $bg-color-2;
+$post-sidebar-bg-color: $bg-color-1;
 $post-title-color: $title-color;
