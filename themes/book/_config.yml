@@ -9,7 +9,12 @@ author:
 # Social Settings
 # ---------------------------------------------------------------
 # Social Links.
-# Usage: `Key: permalink | title | font icon`
 social:
-  GitHub: https://github.com/qw8880000 | github
-  E-Mail: mailto:qw8880000@126.com | envelope
+  - type: link
+    title: Github
+    link: https://github.com/qw8880000
+    icon:
+  - type: email
+    title: E-Mail
+    link: qw8880000@126.com
+    icon:
