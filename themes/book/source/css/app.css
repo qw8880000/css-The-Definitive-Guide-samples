@@ -3998,6 +3998,12 @@ body {
   color: #fff;
 }
 
+.post-toc,
+.post-toc ol {
+  list-style: none;
+  padding-left: 1rem;
+}
+
 .footer {
   padding: 2rem;
   text-align: center;
